@@ -1,0 +1,54 @@
+/* home page landing animations */
+.firstLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #8e1616;
+  animation: slide 1s ease-in-out 5s 1 forwards;
+  transition: top 1s;
+}
+
+.welcomeText {
+  color: transparent;
+  font-size: clamp(1.5rem, 5vw, 4rem);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  animation: textFade 2s ease-in-out 1s 1 forwards;
+  transition: color 2s;
+}
+
+.introduction {
+  color: transparent;
+  font-size: clamp(1.5rem, 5vw, 4rem);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  animation: textFade 2s ease-in-out 3s 1 forwards;
+  transition: color 2s;
+}
+
+@keyframes textFade {
+  0% {
+    color: transparent;
+  }
+  50% {
+    color: #eeeeee;
+  }
+  100% {
+    color: transparent;
+  }
+}
+
+@keyframes slide {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -200%;
+  }
+}
