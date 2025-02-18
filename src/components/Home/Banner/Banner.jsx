@@ -1,6 +1,7 @@
 import React from "react";
 import profile from "../../../assets/profile.jpg";
 import BannerImage from "./BannerImage";
+import Contacts from "./Contacts";
 
 const Banner = () => {
   return (
@@ -8,17 +9,7 @@ const Banner = () => {
       <div className="flex-1">
         <BannerImage profile={profile} />
       </div>
-      <div className="flex-1">
-        <div className="borde-2 h-1/3 hidden md:block">
-          <div className="border-2 -rotate-12 origin-right"></div>
-        </div>
-        <div className="p-fluid-m">
-          <p>name</p>
-          <p>email</p>
-          <p>phone</p>
-          <p>linkdin</p>
-        </div>
-      </div>
+      <Contacts />
     </section>
   );
 };

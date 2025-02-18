@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const BannerImage = ({ profile }) => {
   return (
@@ -13,3 +14,7 @@ const BannerImage = ({ profile }) => {
 };
 
 export default BannerImage;
+
+BannerImage.propTypes = {
+  profile: PropTypes.node,
+};
