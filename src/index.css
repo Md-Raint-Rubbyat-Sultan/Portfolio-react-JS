@@ -52,3 +52,17 @@
     overflow: auto;
   }
 } */
+.animate-circulate {
+  animation: circulate 10s linear infinite;
+}
+
+@keyframes circulate {
+  0% {
+    transform: rotate(0deg) translateX(clamp(9.375rem, 11vw, 21.875rem))
+      rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(clamp(9.375rem, 11vw, 21.875rem))
+      rotate(-360deg);
+  }
+}
