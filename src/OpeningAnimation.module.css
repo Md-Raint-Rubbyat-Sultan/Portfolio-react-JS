@@ -5,14 +5,16 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #8e1616;
+  background-color: #eeeeee;
   animation: slide 1s ease-in-out 4s 1 forwards;
   transition: top 1s;
+  z-index: 30;
 }
 
 .welcomeText {
   color: transparent;
   font-size: clamp(1.5rem, 5vw, 4rem);
+  font-weight: 700;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -24,6 +26,7 @@
 .introduction {
   color: transparent;
   font-size: clamp(1.5rem, 5vw, 4rem);
+  font-weight: 700;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -32,12 +35,26 @@
   transition: color 1.5s;
 }
 
+.secondLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #eeeeee;
+  filter: blur(0px);
+  animation: fadeOut 2s ease-in-out 5s 1 forwards;
+  transition: top 2s;
+  z-index: 0;
+  pointer-events: none;
+}
+
 @keyframes textFade {
   0% {
     color: transparent;
   }
   50% {
-    color: #eeeeee;
+    color: #8e1616;
   }
   100% {
     color: transparent;
@@ -50,5 +67,16 @@
   }
   100% {
     top: -200%;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    filter: blur(0px);
+    background-color: #eeeeee;
+  }
+  100% {
+    filter: blur(100px);
+    background-color: transparent;
   }
 }

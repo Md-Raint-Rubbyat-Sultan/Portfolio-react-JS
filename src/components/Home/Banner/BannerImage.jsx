@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const BannerImage = ({ profile }) => {
   return (
-    <div className="w-fluid-img mx-auto rounded-full">
+    <div className="w-fluid-img mx-auto rounded-full relative z-20">
       <img
         src={profile}
         alt="profile"

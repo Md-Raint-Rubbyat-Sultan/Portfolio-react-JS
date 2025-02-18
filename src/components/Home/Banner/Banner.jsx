@@ -5,7 +5,7 @@ import Contacts from "./Contacts";
 
 const Banner = () => {
   return (
-    <section className="flex flex-col md:flex-row ">
+    <section className="flex flex-col md:flex-row my-fluid">
       <div className="flex-1">
         <BannerImage profile={profile} />
       </div>

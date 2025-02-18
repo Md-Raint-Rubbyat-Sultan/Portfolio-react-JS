@@ -32,6 +32,11 @@ const Contacts = () => {
             </Link>
           </span>
         </p>
+        <div className="mt-fluid-m">
+          <Link to={"/about"}>
+            <button className="btn-prime">Details</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

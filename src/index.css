@@ -37,3 +37,18 @@
   /* basic button */
   @apply text-final bg-third px-4 py-1.5 rounded-md hover:bg-second cursor-pointer;
 }
+
+/* overflow hidden to perform the animation of the landing page */
+
+/* body {
+  overflow: hidden;
+  animation: enableScroll 1s ease-in-out 6s forwards;
+}
+@keyframes enableScroll {
+  0% {
+    overflow: hidden;
+  }
+  100% {
+    overflow: auto;
+  }
+} */
