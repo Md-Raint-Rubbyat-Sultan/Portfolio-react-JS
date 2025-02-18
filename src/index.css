@@ -24,6 +24,7 @@
   --spacing-fluid-m: clamp(1rem, 6vw, 2rem);
   --spacing-fluid-l: clamp(1.5rem, 8vw, 3rem);
   --spacing-fluid-xl: clamp(2rem, 8vw, 4rem);
+  --spacing-fluid-img: clamp(9.375rem, 50vw, 21.875rem);
 }
 
 /* tailwind custom classes */
@@ -36,58 +37,3 @@
   /* basic button */
   @apply text-final bg-third px-4 py-1.5 rounded-md hover:bg-second cursor-pointer;
 }
-
-/* home page landing animations */
-/* .first-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #8e1616;
-  animation: slide 1s ease-in-out 5s 1 forwards;
-  transition: top 1s;
-}
-
-.welcome-text {
-  color: transparent;
-  font-size: clamp(1.5rem, 5vw, 4rem);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  animation: textFade 2s ease-in-out 1s 1 forwards;
-  transition: color 2s;
-}
-
-.introduction {
-  color: transparent;
-  font-size: clamp(1.5rem, 5vw, 4rem);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  animation: textFade 2s ease-in-out 3s 1 forwards;
-  transition: color 2s;
-}
-
-@keyframes textFade {
-  0% {
-    color: transparent;
-  }
-  50% {
-    color: #eeeeee;
-  }
-  100% {
-    color: transparent;
-  }
-}
-
-@keyframes slide {
-  0% {
-    top: 0;
-  }
-  100% {
-    top: -200%;
-  }
-} */

@@ -7,7 +7,7 @@ import OpeningAnimation from "../../components/OpeningAnimation/OpeningAnimation
 const MainLayout = () => {
   return (
     <main className="site-view">
-      <OpeningAnimation />
+      {/* <OpeningAnimation /> */}
       <Navbar />
       <Outlet />
       <Footer />
