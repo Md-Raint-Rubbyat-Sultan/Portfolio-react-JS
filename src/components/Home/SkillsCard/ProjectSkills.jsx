@@ -1,4 +1,5 @@
 import React from "react";
+import projectSkillsDB from "/public/db/projectSkillsDB.js";
 
 const ProjectSkills = () => {
   return (
@@ -8,9 +9,20 @@ const ProjectSkills = () => {
           Skills Used In This Project
         </legend>
         {/* add skills */}
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-        accusamus omnis corrupti minus ab corporis ea, ipsum, numquam voluptatum
-        unde architecto cupiditate ex aut et animi, expedita rem neque! Dolorum.
+        <div>
+          {projectSkillsDB.map((skill, idx) => (
+            <div key={idx} className="flex items-center gap-fluid-l my-fluid">
+              <div className="w-fluid-xl h-fluid-xl rounded-full overflow-hidden">
+                <img
+                  src={skill?.logo}
+                  alt={skill?.name}
+                  className="object-contain h-full"
+                />
+              </div>
+              <p className="text-fluid font-semibold">{skill?.name}</p>
+            </div>
+          ))}
+        </div>
       </fieldset>
     </div>
   );
