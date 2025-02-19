@@ -1,17 +1,17 @@
 const projectSkillsDB = [
   {
     id: 1,
-    logo: "https://i.ibb.co.com/N2DyFpn0/vitejs.png",
+    logo: "https://i.ibb.co.com/FLXtFBj6/vitejs.png",
     name: "Vite-JS",
   },
   {
     id: 2,
-    logo: "https://i.ibb.co.com/RTjZ0vdL/reactjs.png",
+    logo: "https://i.ibb.co.com/6cc0mB8V/reactjs.png",
     name: "React-JS",
   },
   {
     id: 3,
-    logo: "https://i.ibb.co.com/G3bQdycQ/react-Router-Dom.png",
+    logo: "https://i.ibb.co.com/DDSmB8kx/react-Router-Dom.png",
     name: "React-Router-Dom",
   },
   {

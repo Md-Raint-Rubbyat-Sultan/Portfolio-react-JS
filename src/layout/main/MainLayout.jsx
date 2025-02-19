@@ -7,7 +7,9 @@ const MainLayout = () => {
   return (
     <main className="site-view">
       <Navbar />
-      <Outlet />
+      <div className="px-fluid">
+        <Outlet />
+      </div>
       <Footer />
     </main>
   );

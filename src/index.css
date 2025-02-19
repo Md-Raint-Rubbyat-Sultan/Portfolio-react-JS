@@ -30,7 +30,7 @@
 /* tailwind custom classes */
 .site-view {
   /* page basic style */
-  @apply font-roboto max-w-7xl min-h-dvh mx-auto px-fluid bg-final text-prime;
+  @apply font-roboto max-w-7xl min-h-dvh mx-auto bg-final text-prime;
 }
 
 .btn-prime {

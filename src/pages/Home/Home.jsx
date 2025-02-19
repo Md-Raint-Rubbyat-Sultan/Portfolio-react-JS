@@ -1,12 +1,12 @@
 import React from "react";
 import Banner from "../../components/Home/Banner/Banner";
-import SkillsCard from "../../components/Home/SkillsCard/SkillsCard";
+import Skills from "../../components/Home/SkillsCard/Skills";
 
 const Home = () => {
   return (
     <div>
       <Banner />
-      <SkillsCard />
+      <Skills />
     </div>
   );
 };

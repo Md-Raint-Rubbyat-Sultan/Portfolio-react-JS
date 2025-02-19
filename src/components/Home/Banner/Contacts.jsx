@@ -13,12 +13,12 @@ const Contacts = () => {
           <span>Md. Ranit Rubbyat Sultan</span>
         </p>
         <p>
-          <span className="font-bold">Email: </span>
-          <span>mdranitrubbyatsultan@gmail.com</span>
-        </p>
-        <p>
           <span className="font-bold">Contact: </span>
           <span>+8801831495895</span>
+        </p>
+        <p>
+          <span className="font-bold">Email: </span>
+          <span>mdranitrubbyatsultan@gmail.com</span>
         </p>
         <p className="line-clamp-1">
           <span className="font-bold">LinkedIN: </span>
