@@ -1,17 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
+import style from "./BannerImage.module.css";
 
 const BannerImage = ({ profile }) => {
   return (
-    <div className="flex items-center justify-center relative z-20">
-      <div className="w-fluid-img mx-auto border-8 rounded-full">
-        <img
-          src={profile}
-          alt="profile"
-          className="w-full rounded-full object-contain"
-        />
-      </div>
-      <div className="absolute w-fluid h-fluid bg-third rounded-full animate-circulate"></div>
+    <div
+      className={`w-fluid-img mx-auto border-4 border-prime rounded-full relative z-20 ${style.animateCirculate}`}
+    >
+      <img
+        src={profile}
+        alt="profile"
+        className="w-full rounded-full object-contain"
+      />
     </div>
   );
 };

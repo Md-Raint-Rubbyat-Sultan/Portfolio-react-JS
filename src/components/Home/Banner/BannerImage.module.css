@@ -1,0 +1,29 @@
+.animateCirculate::after {
+  content: "R";
+  color: #d84040;
+  background-color: #eeeeee;
+  width: clamp(2.2rem, 6vw, 3rem);
+  text-align: center;
+  font-size: clamp(1rem, 6vw, 2rem);
+  font-weight: 500;
+  border: 1px solid #d84040;
+  border-radius: 100%;
+  box-shadow: 0 4px 8px 0 transparent, 0 6px 20px 0 transparent;
+  position: absolute;
+  top: 82%;
+  left: 78%;
+  animation: circulate 2s linear 1 6s forwards;
+  transition: box-shadow 2s;
+}
+
+@keyframes circulate {
+  0% {
+    box-shadow: 0 4px 8px 0 transparent, 0 6px 20px 0 transparent;
+  }
+  50% {
+    box-shadow: 0 4px 8px 0 #d84040, 0 6px 20px 0 #d84040;
+  }
+  100% {
+    box-shadow: 0 4px 8px 0 transparent, 0 6px 20px 0 transparent;
+  }
+}
