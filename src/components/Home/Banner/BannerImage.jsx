@@ -4,14 +4,16 @@ import style from "./BannerImage.module.css";
 
 const BannerImage = ({ profile }) => {
   return (
-    <div
-      className={`w-fluid-img mx-auto border-4 border-prime rounded-full relative z-20 ${style.animateCirculate}`}
-    >
-      <img
-        src={profile}
-        alt="profile"
-        className="w-full rounded-full object-contain"
-      />
+    <div className="flex-1">
+      <div
+        className={`w-fluid-img mx-auto border-4 border-prime rounded-full relative z-20 ${style.animateCirculate}`}
+      >
+        <img
+          src={profile}
+          alt="profile"
+          className="w-full rounded-full object-contain"
+        />
+      </div>
     </div>
   );
 };
