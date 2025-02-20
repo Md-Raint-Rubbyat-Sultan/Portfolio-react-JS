@@ -35,7 +35,12 @@
 
 .btn-prime {
   /* basic button */
-  @apply text-final bg-third px-4 py-1.5 rounded-md hover:bg-second cursor-pointer;
+  @apply text-fluid text-final font-medium bg-third px-fluid py-fluid-xs rounded-md hover:bg-second cursor-pointer;
+}
+
+.btn-second {
+  /* secondary button */
+  @apply text-fluid text-final font-medium bg-prime border-2 border-transparent px-fluid py-fluid-xs rounded-md hover:bg-final hover:text-prime hover:border-2 hover:border-prime cursor-pointer;
 }
 
 /* overflow hidden to perform the animation of the landing page */

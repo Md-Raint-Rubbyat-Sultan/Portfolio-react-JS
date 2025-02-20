@@ -3,7 +3,7 @@ import React from "react";
 const MySkills = () => {
   return (
     <div className="order-2 md:order-1">
-      <fieldset className="border-2 border-prime px-fluid rounded-md relative">
+      <fieldset className="border-2 border-prime p-fluid rounded-md relative">
         <legend className="px-fluid text-fluid font-semibold">Skills</legend>
         {/* add skills */}
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae sed

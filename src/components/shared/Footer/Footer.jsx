@@ -10,6 +10,9 @@ const Footer = () => {
         <p className="text-fluid-xs font-light">
           Email: mdranitrubbyatsultan@gmail.com
         </p>
+        <p className="text-fluid-xs font-light">
+          &copy;mdranitrubbyatsultan-portfolio
+        </p>
       </div>
     </div>
   );

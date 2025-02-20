@@ -5,11 +5,11 @@ import SkillsCard from "./SkillsCard";
 const ProjectSkills = () => {
   return (
     <div className="order-1 md:order-2">
-      <fieldset className="border-2 border-prime px-fluid rounded-md relative">
+      <fieldset className="border-2 border-prime p-fluid rounded-md relative">
         <legend className="px-fluid text-fluid text-wrap font-semibold">
           Skills Used In This Project
         </legend>
-        <div>
+        <div className="space-y-fluid-m">
           {projectSkillsDB.map((skill, idx) => (
             <SkillsCard
               key={idx}

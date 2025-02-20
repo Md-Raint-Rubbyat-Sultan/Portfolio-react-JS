@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const SkillsCard = ({ logo, name, level }) => {
   return (
-    <div className="flex items-center gap-fluid-l my-fluid-m">
+    <div className="flex items-center gap-fluid-l">
       <div className="w-fluid-xl rounded-full overflow-hidden">
         <img src={logo} alt={name} className="object-contain" />
       </div>

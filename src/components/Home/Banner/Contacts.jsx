@@ -4,7 +4,10 @@ import { Link } from "react-router";
 const Contacts = () => {
   return (
     <div className="flex-1">
-      <div className="borde-2 h-1/3 hidden md:block">
+      <div className="borde-2 h-1/3 hidden md:block relative">
+        <p className="absolute top-2 left-2 text-fluid-m font-semibold">
+          Portfolio
+        </p>
         <div className="border-2 -rotate-12 origin-right"></div>
       </div>
       <div className="p-fluid-m text-fluid">
