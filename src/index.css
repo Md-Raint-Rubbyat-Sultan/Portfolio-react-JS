@@ -1,13 +1,35 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap");
 @import "tailwindcss";
 
-/* custom css */
-@theme {
-  /* colors */
+:root {
   --color-prime: #1d1616;
   --color-second: #8e1616;
   --color-third: #d84040;
   --color-final: #eeeeee;
+}
+
+/* overflow hidden to perform the animation of the landing page */
+
+/* body {
+  overflow: hidden;
+  animation: enableScroll 1s ease-in-out 6.5s forwards;
+}
+@keyframes enableScroll {
+  0% {
+    overflow: hidden;
+  }
+  100% {
+    overflow: auto;
+  }
+} */
+
+/* custom css */
+@theme {
+  /* colors */
+  --color-prime: var(--color-prime);
+  --color-second: var(--color-second);
+  --color-third: var(--color-thied);
+  --color-final: var(--color-final);
 
   /* font family */
   --font-roboto: "Roboto", sans-serif;
@@ -42,18 +64,3 @@
   /* secondary button */
   @apply text-fluid text-final font-medium bg-prime border-2 border-transparent px-fluid py-fluid-xs rounded-md hover:bg-final hover:text-prime hover:border-2 hover:border-prime cursor-pointer;
 }
-
-/* overflow hidden to perform the animation of the landing page */
-
-/* body {
-  overflow: hidden;
-  animation: enableScroll 1s ease-in-out 6.5s forwards;
-}
-@keyframes enableScroll {
-  0% {
-    overflow: hidden;
-  }
-  100% {
-    overflow: auto;
-  }
-} */

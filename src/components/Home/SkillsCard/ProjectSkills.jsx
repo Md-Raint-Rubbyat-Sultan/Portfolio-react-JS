@@ -1,6 +1,6 @@
 import React from "react";
-import projectSkillsDB from "/public/db/projectSkillsDB.js";
 import SkillsCard from "./SkillsCard";
+import { projectSkillsDB } from "/public/db/projectSkillsDB.js";
 
 const ProjectSkills = () => {
   return (
@@ -15,7 +15,7 @@ const ProjectSkills = () => {
               key={idx}
               logo={skill?.logo}
               name={skill?.name}
-              level={skill?.level}
+              level={skill?.level ? skill?.level : null}
             />
           ))}
         </div>

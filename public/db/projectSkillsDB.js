@@ -26,4 +26,4 @@ const projectSkillsDB = [
   },
 ];
 
-export default projectSkillsDB;
+export { projectSkillsDB };
