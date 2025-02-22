@@ -1,5 +1,6 @@
 const projectsDB = [
   {
+    id: "1",
     name: "Portfolio",
     clintSite: {
       site: "http://localhost:5173/",
@@ -18,7 +19,13 @@ const projectsDB = [
     ],
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit sequi esse vitae omnis excepturi minus veritatis officiis laudantium esse vitae omnis excepturi minus veritatis officiis laudantium deleniti nobis, hic nesciunt beatae, facilis quasi explicabo neque a praesentium perspiciatis!",
-    imgs: ["https://i.ibb.co.com/Qjbdq83C/mainPage.png"],
+    chalanges: [
+      {
+        img: "https://i.ibb.co.com/Qjbdq83C/mainPage.png",
+        chalange:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit sequi esse vitae omnis excepturi minus veritatis officiis laudantium esse vitae omnis excepturi minus veritatis officiis laudantium deleniti nobis, hic nesciunt beatae, facilis quasi explicabo neque a praesentium perspiciatis!",
+      },
+    ],
   },
 ];
 

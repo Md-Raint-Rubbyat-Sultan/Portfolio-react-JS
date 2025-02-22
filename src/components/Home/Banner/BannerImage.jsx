@@ -4,9 +4,9 @@ import style from "./BannerImage.module.css";
 
 const BannerImage = ({ profile }) => {
   return (
-    <div className="flex-1">
+    <div className="flex-1 relative overflow-hidden">
       <div
-        className={`w-fluid-img mx-auto border-4 border-prime rounded-full relative z-20 ${style.animateCirculate}`}
+        className={`w-fluid-img mx-auto border-4 border-prime rounded-full relative ${style.animateCirculate}`}
       >
         <img
           src={profile}

@@ -12,8 +12,9 @@
   position: absolute;
   top: 82%;
   left: 78%;
-  animation: circulate 2s linear 1 6s forwards;
-  transition: box-shadow 2s;
+
+  animation: circulate 4s linear 1 5s forwards;
+  transition: box-shadow 4s;
 }
 
 @keyframes circulate {

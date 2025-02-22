@@ -6,9 +6,10 @@
   width: 100%;
   height: 100%;
   background-color: #eeeeee;
-  animation: slide 1s ease-in-out 4s 1 forwards;
-  transition: top 1s;
+  animation: fadeOut 2s ease-in-out 4.5s 1 forwards;
+  transition: top 2s;
   z-index: 30;
+  pointer-events: none;
 }
 
 .welcomeText {
@@ -35,20 +36,6 @@
   transition: color 1.5s;
 }
 
-.secondLayer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #eeeeee;
-  filter: blur(0px);
-  animation: fadeOut 2s ease-in-out 5s 1 forwards;
-  transition: top 2s;
-  z-index: 10;
-  pointer-events: all;
-}
-
 @keyframes textFade {
   0% {
     color: transparent;
@@ -58,15 +45,6 @@
   }
   100% {
     color: transparent;
-  }
-}
-
-@keyframes slide {
-  0% {
-    top: 0;
-  }
-  100% {
-    top: -200%;
   }
 }
 

@@ -8,6 +8,7 @@ const Projects = () => {
       {projectsDB?.map((project, idx) => (
         <ProjectsCards
           key={idx}
+          id={project?.id}
           name={project?.name}
           clintSite={project?.clintSite}
           serverSite={project?.serverSite}
