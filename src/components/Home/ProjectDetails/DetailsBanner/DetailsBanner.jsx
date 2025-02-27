@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import BannerDetailsSection from "./BannerDetailsSection";
+import ChalangesCarousel from "./ChalangesCaousel";
 
 const DetailsBanner = ({ project }) => {
   return (
-    <div className="md:flex md:items-start my-fluid-m">
+    <div className="space-y-fluid-m space-x-fluid-m md:flex md:items-start my-fluid-m">
       {/* image carousel of project */}
-      <div className="flex-1">image caroules</div>
+      <ChalangesCarousel chalanges={project?.chalanges} />
       {/* details about project */}
       <BannerDetailsSection
         name={project?.name}

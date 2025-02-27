@@ -81,7 +81,7 @@ const BannerDetailsSection = ({
       {/* description */}
       <div className="space-y-fluid-xs">
         <h3 className="text-fluid font-medium">Description</h3>
-        <article>{description}</article>
+        <article className="text-fluid-xs">{description}</article>
       </div>
     </div>
   );
