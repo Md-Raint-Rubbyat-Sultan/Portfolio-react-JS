@@ -1,29 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import CarouselCard from "./CarouselCard";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const ChalangesCarousel = ({ chalanges }) => {
-  console.log(chalanges);
+const ChalangesCarousel = ({ chalanges, arrayLength }) => {
+  const [index, setIndex] = useState(0);
+
+  const goNext = () => {
+    index < arrayLength - 1 ? setIndex((prevIdx) => prevIdx + 1) : setIndex(0);
+  };
+
+  const goPrev = () => {
+    index > 0 ? setIndex((prevIdx) => prevIdx - 1) : setIndex(arrayLength - 1);
+  };
+
   return (
     <div className="flex-1">
       <div className="flex md:flex-col space-x-fluid-m space-y-fluid-m">
         <div className="flex-1 md:flex-none relative">
-          {chalanges?.map((chalange, idx) => (
-            <CarouselCard key={idx} img={chalange?.img} />
-          ))}
-          <div className="text-fluid text-prime/50">
-            <span className="absolute top-1/2 -translate-y-1/2 hover:text-prime/100 cursor-pointer">
+          <div className="flex overflow-hidden w-fluid-img mx-auto">
+            {chalanges?.map((chalange, idx) => (
+              <CarouselCard key={idx} img={chalange?.img} index={index} />
+            ))}
+          </div>
+          <div className="text-fluid text-final">
+            <button
+              onClick={goPrev}
+              className="absolute top-1/2 -translate-y-1/2 cursor-pointer p-fluid-xs rounded-full bg-prime/50 hover:bg-prime/100"
+            >
               <FaChevronLeft />
-            </span>
-            <span className="absolute top-1/2 right-0 -translate-y-1/2 hover:text-prime/100 cursor-pointer">
+            </button>
+            <button
+              onClick={goNext}
+              className="absolute top-1/2 right-0 -translate-y-1/2 cursor-pointer p-fluid-xs rounded-full bg-prime/50 hover:bg-prime/100"
+            >
               <FaChevronRight />
-            </span>
+            </button>
           </div>
         </div>
 
         <div className="flex-1">
-          <article className="text-fluid-xs">{chalanges[0]?.chalange}</article>
+          <article className="text-fluid-xs">
+            {chalanges[index]?.chalange}
+          </article>
         </div>
       </div>
     </div>
@@ -32,6 +51,7 @@ const ChalangesCarousel = ({ chalanges }) => {
 
 ChalangesCarousel.propTypes = {
   chalanges: PropTypes.array,
+  arrayLength: PropTypes.number,
 };
 
 export default ChalangesCarousel;

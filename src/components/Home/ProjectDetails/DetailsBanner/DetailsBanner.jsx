@@ -7,7 +7,10 @@ const DetailsBanner = ({ project }) => {
   return (
     <div className="space-y-fluid-m space-x-fluid-m md:flex md:items-start my-fluid-m">
       {/* image carousel of project */}
-      <ChalangesCarousel chalanges={project?.chalanges} />
+      <ChalangesCarousel
+        chalanges={project?.chalanges}
+        arrayLength={project?.chalanges.length}
+      />
       {/* details about project */}
       <BannerDetailsSection
         name={project?.name}

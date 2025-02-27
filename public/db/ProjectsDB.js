@@ -25,6 +25,16 @@ const projectsDB = [
         chalange:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit sequi esse vitae omnis excepturi minus veritatis officiis laudantium esse vitae omnis excepturi minus veritatis officiis laudantium deleniti nobis, hic nesciunt beatae, facilis quasi explicabo neque a praesentium perspiciatis!",
       },
+      {
+        img: "https://i.ibb.co.com/6cc0mB8V/reactjs.png",
+        chalange:
+          "Not lorem ipsum text adipisicing elit. Velit sequi esse vitae omnis excepturi minus veritatis officiis laudantium esse vitae omnis excepturi minus veritatis officiis laudantium deleniti nobis, hic nesciunt beatae, facilis quasi explicabo neque a praesentium perspiciatis!",
+      },
+      {
+        img: "https://i.ibb.co.com/ymY55tKm/NodeJs.png",
+        chalange:
+          "Absouletly not an extra lorem ipsum text adipisicing elit. Velit sequi esse vitae omnis excepturi minus veritatis officiis laudantium esse vitae omnis excepturi minus.",
+      },
     ],
   },
 ];
