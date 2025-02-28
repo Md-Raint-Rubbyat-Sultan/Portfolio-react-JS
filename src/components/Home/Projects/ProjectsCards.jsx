@@ -45,7 +45,7 @@ const ProjectsCards = ({
         </div>
         <div className="text-right">
           <Link to={`/details/${id}`}>
-            <button className="btn-second">More Details</button>
+            <button className="btn-second">Details</button>
           </Link>
         </div>
       </div>

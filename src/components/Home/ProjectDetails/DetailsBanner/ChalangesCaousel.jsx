@@ -40,7 +40,9 @@ const ChalangesCarousel = ({ chalanges, arrayLength }) => {
         </div>
 
         <div className="flex-1">
+          <h3 className="text-fluid font-medium">Chalanges:</h3>
           <article className="text-fluid-xs">
+            <span className="font-medium">Chalange{index + 1}: </span>
             {chalanges[index]?.chalange}
           </article>
         </div>

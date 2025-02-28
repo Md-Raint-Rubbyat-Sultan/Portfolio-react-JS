@@ -15,7 +15,7 @@ const TechSkills = ({ technologies }) => {
               <h3 className="text-fluid-xs font-medium">
                 {toCapital(...techType[idx])}:
               </h3>
-              <ul className="grid grid-cols-2 text-fluid-xs pl-fluid list-disc space-y-fluid-xs">
+              <ul className="grid grid-cols-2 lg:grid-cols-3 text-fluid-xs pl-fluid list-disc space-y-fluid-xs">
                 {tech?.[`${techType[idx]}`].map((techName, idx) => (
                   <li key={idx}>{techName}</li>
                 ))}

@@ -37,7 +37,7 @@ const Contacts = () => {
         </p>
         <div className="mt-fluid-m">
           <Link to={"/about"}>
-            <button className="btn-prime">Details</button>
+            <button className="btn-prime">Learn More</button>
           </Link>
         </div>
       </div>
