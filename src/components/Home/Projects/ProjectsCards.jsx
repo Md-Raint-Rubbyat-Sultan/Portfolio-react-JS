@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router";
 import PropTypes from "prop-types";
+import TechSkills from "../../shared/TechSkills/TechSkills";
+import ProjectLinks from "../../shared/ProjectLinks/ProjectLinks";
 
 const ProjectsCards = ({
   id,
@@ -18,62 +20,21 @@ const ProjectsCards = ({
         {clintSite?.site && clintSite?.git && (
           <div className="space-y-fluid-xs">
             <h3 className="text-fluid font-medium">Clint Site</h3>
-            <div className="md:flex md:items-center md:gap-fluid-xs">
-              <span className="text-fluid-xs font-medium">Site:</span>
-              <Link
-                to={`${clintSite?.site}`}
-                target="_blank"
-                className="text-fluid-xs text-third hover:text-third hover:underline line-clamp-1"
-              >
-                {clintSite?.site}
-              </Link>
-            </div>
-            <div className="md:flex md:items-center md:gap-fluid-xs">
-              <span className="text-fluid-xs font-medium">Git Link:</span>
-              <Link
-                to={`${clintSite?.git}`}
-                target="_blank"
-                className="text-fluid-xs text-third hover:text-third hover:underline line-clamp-1"
-              >
-                {clintSite?.git}
-              </Link>
-            </div>
+            <ProjectLinks links={clintSite} />
           </div>
         )}
         {/* sever side */}
         {serverSite?.site && serverSite?.git && (
           <div className="space-y-fluid-xs">
             <h3 className="text-fluid font-medium">Server Site</h3>
-            <div className="md:flex md:items-center md:gap-fluid-xs">
-              <span className="text-fluid-xs font-medium">Site:</span>
-              <Link
-                to={`${serverSite?.site}`}
-                target="_blank"
-                className="text-fluid-xs text-third hover:text-third hover:underline line-clamp-1"
-              >
-                {serverSite?.site}
-              </Link>
-            </div>
-            <div className="md:flex md:items-center md:gap-fluid-xs">
-              <span className="text-fluid-xs font-medium">Git Link:</span>
-              <Link
-                to={`${serverSite?.git}`}
-                target="_blank"
-                className="text-fluid-xs text-third hover:text-third hover:underline line-clamp-1"
-              >
-                {serverSite?.git}
-              </Link>
-            </div>
+            <ProjectLinks links={serverSite} />
           </div>
         )}
         {/* technologies */}
         <div>
           <h3 className="text-fluid font-medium">Technologies</h3>
-          <ul className="flex flex-wrap items-center gap-fluid-m text-fluid-xs pl-fluid list-disc">
-            {technologies.map((tech, idx) => (
-              <li key={idx}>{tech}</li>
-            ))}
-          </ul>
+          {/* finding the tech according to there uses */}
+          <TechSkills technologies={technologies} />
         </div>
         {/* descriptions */}
         <div>

@@ -11,11 +11,10 @@ const projectsDB = [
       git: "",
     },
     technologies: [
-      "ViteJS",
-      "ReactJS",
-      "React Router Dom",
-      "Tailwind CSS",
-      "NodeJS",
+      { frontend: ["ViteJS", "ReactJS", "React Router Dom", "Tailwind CSS"] },
+      { backend: ["NodeJS"] },
+      { authentication: [] },
+      { versionControl: ["Git Hub"] },
     ],
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit sequi esse vitae omnis excepturi minus veritatis officiis laudantium esse vitae omnis excepturi minus veritatis officiis laudantium deleniti nobis, hic nesciunt beatae, facilis quasi explicabo neque a praesentium perspiciatis!",
