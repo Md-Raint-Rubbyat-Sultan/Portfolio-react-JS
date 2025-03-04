@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import SkillsCard from "./SkillsCard";
-import { projectSkillsDB } from "/public/db/projectSkillsDB.js";
+import projectsDB from "/public/db/ProjectsDB.js";
 
 const ProjectSkills = () => {
+  const [numOfSkills, setNumOfSkills] = useState(5);
+  const portfolio = projectsDB.filter(
+    (project) => project?.name === "Portfolio"
+  );
+
+  const techObj = portfolio[0]?.technologies.flatMap((skill) =>
+    Object.values(skill).flat()
+  );
+
+  const handelShowAll = () => {
+    setNumOfSkills(techObj.length);
+  };
+
   return (
     <div className="order-1 md:order-2">
       <fieldset className="border-2 border-prime p-fluid rounded-md relative">
@@ -10,15 +23,23 @@ const ProjectSkills = () => {
           Skills Used In This Project
         </legend>
         <div className="space-y-fluid-m">
-          {projectSkillsDB.map((skill, idx) => (
+          {techObj.slice(0, numOfSkills)?.map((tech, idx) => (
             <SkillsCard
               key={idx}
-              logo={skill?.logo}
-              name={skill?.name}
-              level={skill?.level ? skill?.level : null}
+              logo={tech?.logo}
+              name={tech?.name}
+              level={null}
             />
           ))}
         </div>
+        {numOfSkills !== techObj.length && (
+          <button
+            onClick={handelShowAll}
+            className="btn-third absolute left-1/2 top-full -translate-x-1/2 -translate-y-1/2"
+          >
+            Show All
+          </button>
+        )}
       </fieldset>
     </div>
   );

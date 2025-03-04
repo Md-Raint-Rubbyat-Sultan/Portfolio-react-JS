@@ -11,10 +11,34 @@ const projectsDB = [
       git: "",
     },
     technologies: [
-      { frontend: ["ViteJS", "ReactJS", "React Router Dom", "Tailwind CSS"] },
-      { backend: ["NodeJS"] },
+      {
+        frontend: [
+          { name: "ViteJS", logo: "https://i.ibb.co.com/FLXtFBj6/vitejs.png" },
+          {
+            name: "ReactJS",
+            logo: "https://i.ibb.co.com/6cc0mB8V/reactjs.png",
+          },
+          {
+            name: "React Router Dom",
+            logo: "https://i.ibb.co.com/DDSmB8kx/react-Router-Dom.png",
+          },
+          {
+            name: "Tailwind CSS",
+            logo: "https://i.ibb.co.com/jPpCjrcf/tailwind-Css.png",
+          },
+        ],
+      },
+      {
+        backend: [
+          { name: "NodeJS", logo: "https://i.ibb.co.com/ymY55tKm/NodeJs.png" },
+        ],
+      },
       { authentication: [] },
-      { versionControl: ["Git Hub"] },
+      {
+        versionControl: [
+          { name: "Github", logo: "https://i.ibb.co.com/bgv4TM40/github.png" },
+        ],
+      },
     ],
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit sequi esse vitae omnis excepturi minus veritatis officiis laudantium esse vitae omnis excepturi minus veritatis officiis laudantium deleniti nobis, hic nesciunt beatae, facilis quasi explicabo neque a praesentium perspiciatis!",

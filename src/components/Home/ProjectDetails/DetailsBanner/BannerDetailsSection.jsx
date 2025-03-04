@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router";
 import TechSkills from "../../../shared/TechSkills/TechSkills";
 import ProjectLinks from "../../../shared/ProjectLinks/ProjectLinks";
 

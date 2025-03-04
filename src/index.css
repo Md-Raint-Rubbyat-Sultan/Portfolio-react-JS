@@ -64,3 +64,8 @@
   /* secondary button */
   @apply text-fluid text-final font-medium bg-prime border-2 border-transparent px-fluid py-fluid-xs rounded-md hover:bg-final hover:text-prime hover:border-2 hover:border-prime cursor-pointer;
 }
+
+.btn-third {
+  /* secondary button */
+  @apply text-fluid text-prime font-medium bg-final border-2 border-prime px-fluid py-fluid-xs rounded-md hover:bg-prime hover:text-final cursor-pointer;
+}
