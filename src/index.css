@@ -57,15 +57,15 @@
 
 .btn-prime {
   /* basic button */
-  @apply text-fluid text-final font-medium bg-third px-fluid py-fluid-xs rounded-md hover:bg-second cursor-pointer;
+  @apply text-fluid text-final font-medium bg-third px-fluid py-fluid-xs rounded-md transition-colors duration-300 hover:bg-second cursor-pointer;
 }
 
 .btn-second {
   /* secondary button */
-  @apply text-fluid text-final font-medium bg-prime border-2 border-transparent px-fluid py-fluid-xs rounded-md hover:bg-final hover:text-prime hover:border-2 hover:border-prime cursor-pointer;
+  @apply text-fluid text-final font-medium bg-prime border-2 border-transparent px-fluid py-fluid-xs rounded-md transition-colors duration-300 hover:bg-final hover:text-prime hover:border-2 hover:border-prime cursor-pointer;
 }
 
 .btn-third {
-  /* secondary button */
-  @apply text-fluid text-prime font-medium bg-final border-2 border-prime px-fluid py-fluid-xs rounded-md hover:bg-prime hover:text-final cursor-pointer;
+  /* third button */
+  @apply text-fluid text-prime font-medium bg-final border-2 border-prime px-fluid py-fluid-xs rounded-md transition-colors duration-300 hover:bg-prime hover:text-final cursor-pointer;
 }
