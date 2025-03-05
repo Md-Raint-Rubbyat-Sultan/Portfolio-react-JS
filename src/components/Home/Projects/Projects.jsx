@@ -1,11 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ProjectsCards from "./ProjectsCards";
-import projectsDB from "/public/db/ProjectsDB.js";
 
-const Projects = () => {
+const Projects = ({ allProjects }) => {
   return (
-    <div className="my-fluid-m">
-      {projectsDB?.map((project, idx) => (
+    <div className="space-y-fluid-m">
+      {allProjects?.map((project, idx) => (
         <ProjectsCards
           key={idx}
           id={project?.id}
@@ -18,6 +18,10 @@ const Projects = () => {
       ))}
     </div>
   );
+};
+
+Projects.propTypes = {
+  allProjects: PropTypes.array,
 };
 
 export default Projects;

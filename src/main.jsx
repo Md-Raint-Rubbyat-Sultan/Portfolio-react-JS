@@ -8,7 +8,7 @@ import OpeningAnimation from "./OpeningAnimation";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <OpeningAnimation /> */}
+      <OpeningAnimation />
       <RouterDom />
     </BrowserRouter>
   </React.StrictMode>

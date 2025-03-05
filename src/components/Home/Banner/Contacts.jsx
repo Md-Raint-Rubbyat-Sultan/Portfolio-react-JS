@@ -29,7 +29,7 @@ const Contacts = () => {
             <Link
               to={"https://www.linkedin.com/in/ranit-rubbyat-sultan-khan/"}
               target="_blank"
-              className="underline text-third"
+              className="hover:underline text-third"
             >
               linkedin.com/in/ranit-rubbyat-sultan-khan
             </Link>

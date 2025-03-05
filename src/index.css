@@ -10,7 +10,7 @@
 
 /* overflow hidden to perform the animation of the landing page */
 
-/* body {
+body {
   overflow: hidden;
   animation: enableScroll 1s ease-in-out 6.5s forwards;
 }
@@ -21,7 +21,7 @@
   100% {
     overflow: auto;
   }
-} */
+}
 
 /* custom css */
 @theme {
