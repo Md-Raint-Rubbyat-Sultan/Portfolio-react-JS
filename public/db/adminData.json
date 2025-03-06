@@ -1,0 +1,110 @@
+{
+  "profile": {
+    "name": "Md. Ranit Rubbyat Sultan",
+    "title": "MERN Stack Developer",
+    "description": "Motivated and detail-oriented junior web developer with a strong foundation in the MERN stack, seeking a challenging role as a MERN stack developer. Eager to contribute my skills in MongoDB, Express.js, React, and Node.js to a dynamic development team.Committed to continuous learning and staying abreast of emerging technologies to enhance project efficiency and deliver innovative solutions."
+  },
+  "contact": {
+    "phone": "+8801831495895",
+    "email": "mdranitrubbyatsultan@gmail.com",
+    "location": "Lalbagh, Dhaka, Bangladesh",
+    "linkedIn": "https://www.linkedin.com/in/ranit-rubbyat-sultan-khan/",
+    "gitHub": "https://github.com/Md-Raint-Rubbyat-Sultan"
+  },
+  "technical_skills": [
+    {
+      "frontend": [
+        {
+          "name": "JavaScript",
+          "level": "advance"
+        },
+        {
+          "name": "ViteJS",
+          "level": "basic"
+        },
+        {
+          "name": "ReactJS",
+          "level": "advance"
+        },
+        {
+          "name": "React Router Dom",
+          "level": "advance"
+        },
+        {
+          "name": "Tailwind CSS",
+          "level": "advance"
+        },
+        {
+          "name": "NextJS",
+          "level": "intermediate"
+        },
+        {
+          "name": "Redux / Redux-Toolkit",
+          "level": "basic"
+        }
+      ]
+    },
+    {
+      "backend": [
+        {
+          "name": "NodeJS",
+          "level": "advance"
+        },
+        {
+          "name": "Express JS",
+          "level": "advance"
+        },
+        {
+          "name": "MongoDB",
+          "level": "intermediate"
+        },
+        {
+          "name": "MySQL",
+          "level": "intermediate"
+        },
+        {
+          "name": "Mongoose",
+          "level": "basic"
+        }
+      ]
+    },
+    {
+      "authentication": [
+        {
+          "name": "Firebase",
+          "level": "intermediate"
+        },
+        {
+          "name": "JWT(Json Web Tocken)",
+          "level": "intermediate"
+        }
+      ]
+    },
+    {
+      "versionControl": [
+        {
+          "name": "Github",
+          "level": "advance"
+        }
+      ]
+    }
+  ],
+  "language_skills": [
+    {
+      "name": "Bangla",
+      "level": "native"
+    },
+    {
+      "name": "English",
+      "level": "Fluent"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Dhaka College, Dhaka (Affiliated with University of Dhaka)",
+      "degree": "BSC in Statistics",
+      "location": "Dhaka, Bangladesh",
+      "year": "FROM: FEBRUARY 2022 – TO: ONGING"
+    }
+  ]
+}

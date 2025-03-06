@@ -33,7 +33,14 @@ const projectsDB = [
           { name: "NodeJS", logo: "https://i.ibb.co.com/ymY55tKm/NodeJs.png" },
         ],
       },
-      { authentication: [] },
+      {
+        authentication: [
+          {
+            name: "Firebase",
+            logo: "https://i.ibb.co.com/21VwVw5Q/firebase.png",
+          },
+        ],
+      },
       {
         versionControl: [
           { name: "Github", logo: "https://i.ibb.co.com/bgv4TM40/github.png" },
