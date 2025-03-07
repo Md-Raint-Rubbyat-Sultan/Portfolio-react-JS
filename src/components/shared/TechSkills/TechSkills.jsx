@@ -16,7 +16,9 @@ const TechSkills = ({ technologies, gridLg }) => {
                 {toCapital(...techType[idx])}:
               </h3>
               <ul
-                className={`grid grid-cols-2 lg:grid-cols-${gridLg} text-fluid-xs pl-fluid list-disc space-y-fluid-xs`}
+                className={`grid grid-cols-2 ${
+                  gridLg ? "lg:grid-cols-3" : ""
+                } text-fluid-xs pl-fluid list-disc space-y-fluid-xs`}
               >
                 {tech?.[`${techType[idx]}`].map((techName, idx) => (
                   <li key={idx}>
@@ -34,6 +36,7 @@ const TechSkills = ({ technologies, gridLg }) => {
 
 TechSkills.propTypes = {
   technologies: PropTypes.array,
+  gridLg: PropTypes.bool,
 };
 
 export default TechSkills;

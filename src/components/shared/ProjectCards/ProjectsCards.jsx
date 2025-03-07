@@ -11,6 +11,7 @@ const ProjectsCards = ({
   serverSite,
   technologies,
   description,
+  isTrue,
 }) => {
   return (
     <fieldset className="border-2 border-prime p-fluid rounded-md relative">
@@ -34,20 +35,22 @@ const ProjectsCards = ({
         <div>
           <h3 className="text-fluid font-medium">Technologies</h3>
           {/* finding the tech according to there uses */}
-          <TechSkills technologies={technologies} gridLg={3} />
+          <TechSkills technologies={technologies} gridLg={true} />
         </div>
         {/* descriptions */}
         <div>
           <h3 className="text-fluid font-medium">Decriptions</h3>
-          <article className="line-clamp-2 text-fluid-xs">
+          <article className={`${!isTrue ? "" : "line-clamp-2"} text-fluid-xs`}>
             {description}
           </article>
         </div>
-        <div className="text-right">
-          <Link to={`/details/${id}`}>
-            <button className="btn-second">Details</button>
-          </Link>
-        </div>
+        {isTrue && (
+          <div className="text-right">
+            <Link to={`/details/${id}`}>
+              <button className="btn-second">Details</button>
+            </Link>
+          </div>
+        )}
       </div>
     </fieldset>
   );
@@ -60,6 +63,7 @@ ProjectsCards.propTypes = {
   serverSite: PropTypes.object,
   technologies: PropTypes.array,
   description: PropTypes.string,
+  isTrue: PropTypes.bool,
 };
 
 export default ProjectsCards;

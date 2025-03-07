@@ -3,8 +3,13 @@ import { CgProfile } from "react-icons/cg";
 import { FaRegCircle, FaLinkedin, FaGithub } from "react-icons/fa";
 import { IoIosCall } from "react-icons/io";
 import { IoLocation, IoMail } from "react-icons/io5";
+import { PiBagSimpleLight } from "react-icons/pi";
+import { LuGraduationCap } from "react-icons/lu";
 import { Link } from "react-router";
 import TechSkills from "../../components/shared/TechSkills/TechSkills";
+import projectsDB from "/public/db/ProjectsDB.js";
+import ProjectsCards from "../../components/shared/ProjectCards/ProjectsCards";
+import toCapital from "../../Constants/toCapital";
 
 const About = () => {
   const [adminData, setAdminData] = useState({});
@@ -19,7 +24,7 @@ const About = () => {
     getAdminData();
   }, []);
 
-  console.log(adminData);
+  // console.log(adminData);
 
   return (
     <section className="my-fluid-m space-y-fluid-m relative">
@@ -84,8 +89,24 @@ const About = () => {
             <div>
               <TechSkills
                 technologies={adminData?.technical_skills}
-                gridLg={2}
+                gridLg={false}
               />
+            </div>
+          </div>
+          {/* language */}
+          <div className="space-y-fluid">
+            <div>
+              <h3 className="text-fluid font-medium">LANGUAGE</h3>
+              <hr />
+            </div>
+            <div>
+              <ul className="text-fluid-xs pl-fluid list-disc space-y-fluid-xs">
+                {adminData?.language_skills?.map((lang, idx) => (
+                  <li key={idx}>
+                    {lang?.name} - {`(${toCapital(lang?.level)})`}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
@@ -109,7 +130,7 @@ const About = () => {
           {/* Eucation */}
           <div className="flex items-start gap-fluid-xs">
             <div>
-              <CgProfile className="text-fluid" />
+              <LuGraduationCap className="text-fluid" />
             </div>
             <div>
               <h3 className="text-fluid font-medium">EDUCATION</h3>
@@ -134,13 +155,26 @@ const About = () => {
           <div>
             <div className="flex items-start gap-fluid-xs">
               <div>
-                <CgProfile className="text-fluid" />
+                <PiBagSimpleLight className="text-fluid" />
               </div>
               <div>
                 <h3 className="text-fluid font-medium">PROJECTS</h3>
                 <div className="border-l border-t border-prime/50 relative">
                   <FaRegCircle className="text-fluid-xs bg-final rounded-full absolute top-1/2 -translate-y-1/2 -translate-x-1/2" />
-                  <div className="pl-fluid pt-fluid"></div>
+                  <div className="pl-fluid pt-fluid">
+                    {projectsDB?.map((project, idx) => (
+                      <ProjectsCards
+                        key={idx}
+                        id={project?.id}
+                        name={project?.name}
+                        clintSite={project?.clintSite}
+                        serverSite={project?.serverSite}
+                        technologies={project?.technologies}
+                        description={project?.description}
+                        isTrue={false}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

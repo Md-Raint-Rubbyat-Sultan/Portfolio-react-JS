@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ProjectsCards from "./ProjectsCards";
+import ProjectsCards from "../../shared/ProjectCards/ProjectsCards";
 
 const Projects = ({ allProjects }) => {
   return (
@@ -14,6 +14,7 @@ const Projects = ({ allProjects }) => {
           serverSite={project?.serverSite}
           technologies={project?.technologies}
           description={project?.description}
+          isTrue={true}
         />
       ))}
     </div>
