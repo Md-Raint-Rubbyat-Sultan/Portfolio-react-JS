@@ -10,7 +10,7 @@ const ProjectLinks = ({ links }) => {
         <Link
           to={`${links?.site}`}
           target="_blank"
-          className="text-fluid-xs text-third hover:text-third hover:underline line-clamp-1"
+          className="links text-fluid-xs line-clamp-1"
         >
           {links?.site}
         </Link>
@@ -20,7 +20,7 @@ const ProjectLinks = ({ links }) => {
         <Link
           to={`${links?.git}`}
           target="_blank"
-          className="text-fluid-xs text-third hover:text-third hover:underline line-clamp-1"
+          className="text-fluid-xs links line-clamp-1"
         >
           {links?.git}
         </Link>

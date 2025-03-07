@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import toCapital from "../../../Constants/toCapital";
 
-const TechSkills = ({ technologies }) => {
+const TechSkills = ({ technologies, gridLg }) => {
   // get the type of the tech
-  const techType = technologies.map((tech) => Object.keys(tech));
+  const techType = technologies?.map((tech) => Object.keys(tech));
 
   return (
     <div className="space-y-fluid-xs">
@@ -15,7 +15,9 @@ const TechSkills = ({ technologies }) => {
               <h3 className="text-fluid-xs font-medium">
                 {toCapital(...techType[idx])}:
               </h3>
-              <ul className="grid grid-cols-2 lg:grid-cols-3 text-fluid-xs pl-fluid list-disc space-y-fluid-xs">
+              <ul
+                className={`grid grid-cols-2 lg:grid-cols-${gridLg} text-fluid-xs pl-fluid list-disc space-y-fluid-xs`}
+              >
                 {tech?.[`${techType[idx]}`].map((techName, idx) => (
                   <li key={idx}>
                     {techName?.name}{" "}

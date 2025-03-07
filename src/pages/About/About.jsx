@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
-import { FaRegCircle } from "react-icons/fa";
+import { FaRegCircle, FaLinkedin, FaGithub } from "react-icons/fa";
+import { IoIosCall } from "react-icons/io";
+import { IoLocation, IoMail } from "react-icons/io5";
+import { Link } from "react-router";
+import TechSkills from "../../components/shared/TechSkills/TechSkills";
 
 const About = () => {
   const [adminData, setAdminData] = useState({});
@@ -23,25 +27,123 @@ const About = () => {
         <p className="text-fluid-m">{adminData?.profile?.name}</p>
         <p className="text-fluid">{adminData?.profile?.title}</p>
       </div>
-      <div className="grid grid-cols-3 gap-fluid">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-fluid">
         {/* tech skills and language*/}
-        <div></div>
-        {/* profile and project */}
-        <div className="col-span-2">
-          <div className="flex items-start gap-fluid-xs">
-            <div className="space-y-fluid">
-              <CgProfile className="text-fluid" />
-              <div className="flex flex-col items-center h-full">
-                {/* <hr className="grow" /> */}
-                <div className="border-2"></div>
-                <FaRegCircle className="text-fluid-xs" />
-                <div className="border-2 flex-1"></div>
+        <div className="space-y-fluid-m">
+          {/* contact */}
+          <div className="space-y-fluid">
+            <div>
+              <h3 className="text-fluid font-medium">CONTACT</h3>
+              <hr />
+            </div>
+            <div className="text-fluid-xs">
+              <div className="flex items-center gap-fluid-xs">
+                <IoIosCall />
+                <span>{adminData?.contact?.phone}</span>
+              </div>
+              <div className="flex flex-wrap items-center gap-fluid-xs">
+                <IoMail />
+                <span>{adminData?.contact?.email}</span>
+              </div>
+              <div className="flex flex-wrap items-center gap-fluid-xs">
+                <IoLocation />
+                <span>{adminData?.contact?.location}</span>
+              </div>
+              <div className="flex items-center gap-fluid-xs">
+                <FaLinkedin className="min-w-fluid-xs min-h-fluid-xs" />
+                <span>
+                  <Link
+                    to={adminData?.contact?.linkedIn}
+                    target="_blank"
+                    className="links line-clamp-1"
+                  >
+                    {adminData?.contact?.linkedIn}
+                  </Link>
+                </span>
+              </div>
+              <div className="flex items-center gap-fluid-xs">
+                <FaGithub className="min-w-fluid-xs min-h-fluid-xs" />
+                <span>
+                  <Link
+                    to={adminData?.contact?.gitHub}
+                    target="_blank"
+                    className="links line-clamp-1"
+                  >
+                    {adminData?.contact?.gitHub}
+                  </Link>
+                </span>
               </div>
             </div>
+          </div>
+          {/* tech */}
+          <div className="space-y-fluid">
+            <div>
+              <h3 className="text-fluid font-medium">TECHNICAL SKILLS</h3>
+              <hr />
+            </div>
+            <div>
+              <TechSkills
+                technologies={adminData?.technical_skills}
+                gridLg={2}
+              />
+            </div>
+          </div>
+        </div>
+        {/* profile and project */}
+        <div className="col-span-1 sm:col-span-2 space-y-fluid-m">
+          {/* profile */}
+          <div className="flex items-start gap-fluid-xs">
+            <div>
+              <CgProfile className="text-fluid" />
+            </div>
             <article>
-              <p className="text-fluid font-medium">Profile</p>
-              <p className="text-fluid-xs">{adminData?.profile?.description}</p>
+              <h3 className="text-fluid font-medium">PROFILE</h3>
+              <div className="border-l border-t border-prime/50 relative">
+                <FaRegCircle className="text-fluid-xs bg-final rounded-full absolute top-1/2 -translate-y-1/2 -translate-x-1/2" />
+                <p className="text-fluid-xs pl-fluid pt-fluid">
+                  {adminData?.profile?.description}
+                </p>
+              </div>
             </article>
+          </div>
+          {/* Eucation */}
+          <div className="flex items-start gap-fluid-xs">
+            <div>
+              <CgProfile className="text-fluid" />
+            </div>
+            <div>
+              <h3 className="text-fluid font-medium">EDUCATION</h3>
+              <div className="border-l border-t border-prime/50 relative">
+                <FaRegCircle className="text-fluid-xs bg-final rounded-full absolute top-1/2 -translate-y-1/2 -translate-x-1/2" />
+                <div className="text-fluid-xs pl-fluid pt-fluid">
+                  <article>
+                    {adminData?.education?.map((edu, idx) => (
+                      <div key={idx}>
+                        <p className="font-medium">{edu?.degree}</p>
+                        <p>{edu?.institution}</p>
+                        <p>{edu?.location}</p>
+                        <p>{edu?.year}</p>
+                      </div>
+                    ))}
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* projects */}
+          <div>
+            <div className="flex items-start gap-fluid-xs">
+              <div>
+                <CgProfile className="text-fluid" />
+              </div>
+              <div>
+                <h3 className="text-fluid font-medium">PROJECTS</h3>
+                <div className="border-l border-t border-prime/50 relative">
+                  <FaRegCircle className="text-fluid-xs bg-final rounded-full absolute top-1/2 -translate-y-1/2 -translate-x-1/2" />
+                  <div className="pl-fluid pt-fluid"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

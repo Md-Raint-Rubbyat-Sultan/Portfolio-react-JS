@@ -69,3 +69,7 @@
   /* third button */
   @apply text-fluid text-prime font-medium bg-final border-2 border-prime px-fluid py-fluid-xs rounded-md transition-colors duration-300 hover:bg-prime hover:text-final cursor-pointer;
 }
+
+.links {
+  @apply text-third hover:underline hover:text-second;
+}

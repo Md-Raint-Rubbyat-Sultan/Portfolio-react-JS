@@ -32,7 +32,7 @@ const BannerDetailsSection = ({
       <div className="space-y-fluid-xs">
         <h3 className="text-fluid font-medium">Technilogies</h3>
         {/* finding the tech according to there uses */}
-        <TechSkills technologies={technologies} />
+        <TechSkills technologies={technologies} gridLg={3} />
       </div>
       {/* description */}
       <div className="space-y-fluid-xs">

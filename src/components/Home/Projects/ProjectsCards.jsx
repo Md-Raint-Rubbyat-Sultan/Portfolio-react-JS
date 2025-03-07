@@ -34,7 +34,7 @@ const ProjectsCards = ({
         <div>
           <h3 className="text-fluid font-medium">Technologies</h3>
           {/* finding the tech according to there uses */}
-          <TechSkills technologies={technologies} />
+          <TechSkills technologies={technologies} gridLg={3} />
         </div>
         {/* descriptions */}
         <div>

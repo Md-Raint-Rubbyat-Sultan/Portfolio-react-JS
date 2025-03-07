@@ -16,31 +16,39 @@
       "frontend": [
         {
           "name": "JavaScript",
-          "level": "advance"
-        },
-        {
-          "name": "ViteJS",
-          "level": "basic"
+          "level": "advance",
+          "logo": ""
         },
         {
           "name": "ReactJS",
-          "level": "advance"
+          "level": "advance",
+          "logo": "https://i.ibb.co.com/6cc0mB8V/reactjs.png"
         },
         {
           "name": "React Router Dom",
-          "level": "advance"
+          "level": "advance",
+          "logo": "https://i.ibb.co.com/DDSmB8kx/react-Router-Dom.png"
         },
         {
           "name": "Tailwind CSS",
-          "level": "advance"
+          "level": "advance",
+          "logo": "https://i.ibb.co.com/jPpCjrcf/tailwind-Css.png"
         },
         {
           "name": "NextJS",
-          "level": "intermediate"
+          "level": "intermediate",
+          "logo": ""
+        },
+
+        {
+          "name": "ViteJS",
+          "level": "basic",
+          "logo": "https://i.ibb.co.com/FLXtFBj6/vitejs.png"
         },
         {
           "name": "Redux / Redux-Toolkit",
-          "level": "basic"
+          "level": "basic",
+          "logo": ""
         }
       ]
     },
@@ -48,23 +56,28 @@
       "backend": [
         {
           "name": "NodeJS",
-          "level": "advance"
+          "level": "advance",
+          "logo": "https://i.ibb.co.com/ymY55tKm/NodeJs.png"
         },
         {
           "name": "Express JS",
-          "level": "advance"
+          "level": "advance",
+          "logo": ""
         },
         {
           "name": "MongoDB",
-          "level": "intermediate"
+          "level": "intermediate",
+          "logo": ""
         },
         {
           "name": "MySQL",
-          "level": "intermediate"
+          "level": "intermediate",
+          "logo": ""
         },
         {
           "name": "Mongoose",
-          "level": "basic"
+          "level": "basic",
+          "logo": ""
         }
       ]
     },
@@ -72,11 +85,13 @@
       "authentication": [
         {
           "name": "Firebase",
-          "level": "intermediate"
+          "level": "intermediate",
+          "logo": "https://i.ibb.co.com/21VwVw5Q/firebase.png"
         },
         {
           "name": "JWT(Json Web Tocken)",
-          "level": "intermediate"
+          "level": "intermediate",
+          "logo": ""
         }
       ]
     },
@@ -84,7 +99,8 @@
       "versionControl": [
         {
           "name": "Github",
-          "level": "advance"
+          "level": "advance",
+          "logo": "https://i.ibb.co.com/bgv4TM40/github.png"
         }
       ]
     }
@@ -101,7 +117,7 @@
   ],
   "education": [
     {
-      "institution": "Dhaka College, Dhaka (Affiliated with University of Dhaka)",
+      "institution": "Dhaka College (Affiliated with University of Dhaka)",
       "degree": "BSC in Statistics",
       "location": "Dhaka, Bangladesh",
       "year": "FROM: FEBRUARY 2022 – TO: ONGING"
