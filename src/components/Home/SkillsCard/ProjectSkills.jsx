@@ -8,12 +8,12 @@ const ProjectSkills = () => {
     (project) => project?.name === "Portfolio"
   );
 
-  const techObj = portfolio[0]?.technologies.flatMap((skill) =>
+  const techObj = portfolio[0]?.technologies?.flatMap((skill) =>
     Object.values(skill).flat()
   );
 
   const handelShowAll = () => {
-    setNumOfSkills(techObj.length);
+    setNumOfSkills(techObj?.length);
   };
 
   return (
@@ -23,7 +23,7 @@ const ProjectSkills = () => {
           Skills Used In This Project
         </legend>
         <div className="space-y-fluid-m">
-          {techObj.slice(0, numOfSkills)?.map((tech, idx) => (
+          {techObj?.slice(0, numOfSkills)?.map((tech, idx) => (
             <SkillsCard
               key={idx}
               logo={tech?.logo}
@@ -32,7 +32,7 @@ const ProjectSkills = () => {
             />
           ))}
         </div>
-        {numOfSkills !== techObj.length && (
+        {numOfSkills !== techObj?.length && (
           <button
             onClick={handelShowAll}
             className="btn-third absolute left-1/2 top-full -translate-x-1/2 -translate-y-1/2"

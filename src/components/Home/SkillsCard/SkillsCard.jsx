@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const SkillsCard = ({ tech, logo, name, level }) => {
+const SkillsCard = ({ logo, name, level }) => {
   return (
     <div className="flex items-center gap-fluid-l">
       <div className="w-fluid-xl rounded-full overflow-hidden">
@@ -16,7 +16,6 @@ const SkillsCard = ({ tech, logo, name, level }) => {
 };
 
 SkillsCard.propTypes = {
-  tech: PropTypes.array,
   logo: PropTypes.string,
   name: PropTypes.string,
   level: PropTypes.string,

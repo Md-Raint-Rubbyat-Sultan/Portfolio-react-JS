@@ -25,7 +25,7 @@ const About = () => {
     getAdminData();
   }, []);
 
-  // console.log(adminData);
+  console.log(adminData);
 
   // pdf download
   const handleDownloadPDF = async () => {
@@ -507,6 +507,34 @@ const About = () => {
                 </div>
               </div>
             </div>
+            {/* experiance */}
+            {adminData?.experiance?.institution && (
+              <div>
+                <div className="flex items-start gap-fluid-xs">
+                  <div>
+                    <PiBagSimpleLight className="text-fluid" />
+                  </div>
+                  <div>
+                    <h3 className="text-fluid font-medium">EXPERIANCE</h3>
+                    <div className="border-l border-t border-prime relative">
+                      <FaRegCircle className="text-fluid-xs bg-final rounded-full absolute top-1/2 -translate-y-1/2 -translate-x-1/2" />
+                      <div className="text-fluid-xs pl-fluid pt-fluid">
+                        <article>
+                          {adminData?.experiance?.map((exp, idx) => (
+                            <div key={idx}>
+                              <p className="font-medium">{exp?.institution}</p>
+                              <p>{exp?.position}</p>
+                              <p>{exp?.location}</p>
+                              <p>{exp?.year}</p>
+                            </div>
+                          ))}
+                        </article>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
