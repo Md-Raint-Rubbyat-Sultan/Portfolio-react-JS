@@ -13,7 +13,8 @@
   },
   "technical_skills": [
     {
-      "frontend": [
+      "category": "frontend",
+      "tech": [
         {
           "name": "JavaScript",
           "level": "advance",
@@ -53,7 +54,8 @@
       ]
     },
     {
-      "backend": [
+      "category": "backend",
+      "tech": [
         {
           "name": "NodeJS",
           "level": "advance",
@@ -82,7 +84,8 @@
       ]
     },
     {
-      "authentication": [
+      "category": "authentication",
+      "tech": [
         {
           "name": "Firebase",
           "level": "intermediate",
@@ -96,7 +99,8 @@
       ]
     },
     {
-      "versionControl": [
+      "category": "versionControl",
+      "tech": [
         {
           "name": "Github",
           "level": "advance",

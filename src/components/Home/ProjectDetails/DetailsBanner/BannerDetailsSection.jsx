@@ -37,7 +37,15 @@ const BannerDetailsSection = ({
       {/* description */}
       <div className="space-y-fluid-xs">
         <h3 className="text-fluid font-medium">Description</h3>
-        <article className="text-fluid-xs">{description}</article>
+        <article className="text-fluid-xs">
+          {description ? (
+            description
+          ) : (
+            <span className="text-gradient from-second to-third">
+              NO DESCRIPTION PROVIDED
+            </span>
+          )}
+        </article>
       </div>
     </div>
   );

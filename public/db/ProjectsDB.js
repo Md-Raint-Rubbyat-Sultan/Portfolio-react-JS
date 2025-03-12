@@ -12,7 +12,8 @@ const projectsDB = [
     },
     technologies: [
       {
-        frontend: [
+        category: "frontend",
+        tech: [
           { name: "ViteJS", logo: "https://i.ibb.co.com/FLXtFBj6/vitejs.png" },
           {
             name: "ReactJS",
@@ -29,11 +30,13 @@ const projectsDB = [
         ],
       },
       {
-        backend: [
+        category: "backend",
+        tech: [
           { name: "NodeJS", logo: "https://i.ibb.co.com/ymY55tKm/NodeJs.png" },
         ],
       },
       {
+        category: "authentication",
         authentication: [
           {
             name: "Firebase",
@@ -42,13 +45,13 @@ const projectsDB = [
         ],
       },
       {
+        category: "versionControl",
         versionControl: [
           { name: "Github", logo: "https://i.ibb.co.com/bgv4TM40/github.png" },
         ],
       },
     ],
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit sequi esse vitae omnis excepturi minus veritatis officiis laudantium esse vitae omnis excepturi minus veritatis officiis laudantium deleniti nobis, hic nesciunt beatae, facilis quasi explicabo neque a praesentium perspiciatis!",
+    description: "",
     chalanges: [
       {
         img: "https://i.ibb.co.com/Qjbdq83C/mainPage.png",

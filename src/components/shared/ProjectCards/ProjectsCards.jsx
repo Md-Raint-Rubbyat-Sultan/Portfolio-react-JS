@@ -41,7 +41,13 @@ const ProjectsCards = ({
         <div>
           <h3 className="text-fluid font-medium">Decriptions</h3>
           <article className={`${!isTrue ? "" : "line-clamp-2"} text-fluid-xs`}>
-            {description}
+            {description ? (
+              description
+            ) : (
+              <span className="text-gradient from-second to-third">
+                NO DESCRIPTION PROVIDED
+              </span>
+            )}
           </article>
         </div>
         {isTrue && (

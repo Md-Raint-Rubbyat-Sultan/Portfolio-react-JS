@@ -71,5 +71,10 @@
 }
 
 .links {
+  /* links common property */
   @apply text-third hover:underline hover:text-second;
+}
+
+.text-gradient {
+  @apply inline-block bg-clip-text text-transparent bg-gradient-to-r;
 }

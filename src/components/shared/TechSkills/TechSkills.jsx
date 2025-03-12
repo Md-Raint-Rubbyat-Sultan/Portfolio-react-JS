@@ -9,18 +9,18 @@ const TechSkills = ({ technologies, gridLg }) => {
   return (
     <div className="space-y-fluid-xs">
       {technologies?.map(
-        (tech, idx) =>
-          tech?.[`${techType[idx]}`].length > 0 && (
+        (techs, idx) =>
+          techs?.tech?.length > 0 && (
             <div key={idx}>
               <h3 className="text-fluid-xs font-medium">
-                {toCapital(...techType[idx])}:
+                {toCapital(techs?.category)}:
               </h3>
               <ul
                 className={`grid grid-cols-2 ${
                   gridLg ? "lg:grid-cols-3" : ""
                 } text-fluid-xs pl-fluid list-disc space-y-fluid-xs`}
               >
-                {tech?.[`${techType[idx]}`].map((techName, idx) => (
+                {techs?.tech?.map((techName, idx) => (
                   <li key={idx}>
                     {techName?.name}{" "}
                     {techName?.level && `(${toCapital(techName?.level)})`}
