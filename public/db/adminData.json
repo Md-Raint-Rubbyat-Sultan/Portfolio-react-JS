@@ -124,10 +124,10 @@
       "institution": "Dhaka College (Affiliated with University of Dhaka)",
       "degree": "BSC in Statistics",
       "location": "Dhaka, Bangladesh",
-      "year": "FROM: FEBRUARY 2022 – TO: ONGING"
+      "year": { "start": "february 2022", "end": "ongoing" }
     }
   ],
-  "experiance": [
+  "experience": [
     {
       "institution": "",
       "position": "",

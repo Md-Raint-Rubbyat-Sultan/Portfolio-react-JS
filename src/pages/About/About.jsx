@@ -155,7 +155,10 @@ const About = () => {
                           <p className="font-medium">{edu?.degree}</p>
                           <p>{edu?.institution}</p>
                           <p>{edu?.location}</p>
-                          <p>{edu?.year}</p>
+                          <p>
+                            FROM: {edu?.year?.start?.toUpperCase()} TO{" "}
+                            {edu?.year?.end?.toUpperCase()}
+                          </p>
                         </div>
                       ))}
                     </article>
@@ -192,7 +195,7 @@ const About = () => {
               </div>
             </div>
             {/* experiance */}
-            {adminData?.experiance?.institution && (
+            {adminData?.experience?.institution && (
               <div>
                 <div className="flex items-start gap-fluid-xs">
                   <div>
@@ -204,7 +207,7 @@ const About = () => {
                       <FaRegCircle className="text-fluid-xs bg-final rounded-full absolute top-1/2 -translate-y-1/2 -translate-x-1/2" />
                       <div className="text-fluid-xs pl-fluid pt-fluid">
                         <article>
-                          {adminData?.experiance?.map((exp, idx) => (
+                          {adminData?.experience?.map((exp, idx) => (
                             <div key={idx}>
                               <p className="font-medium">{exp?.institution}</p>
                               <p>{exp?.position}</p>
