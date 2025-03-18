@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router";
 import Navbar from "../../components/shared/Navbar/Navbar";
 import Footer from "../../components/shared/Footer/Footer";

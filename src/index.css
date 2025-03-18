@@ -1,35 +1,44 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap");
 @import "tailwindcss";
 
-:root {
-  --color-prime: #1d1616;
-  --color-second: #8e1616;
-  --color-third: #d84040;
-  --color-final: #eeeeee;
+/* @custom-variant gray-sheet (&:where(.gray-sheet, .gray-sheet *));
+@custom-variant dark (&:where(.dark, .dark *)); */
+
+[data-theme="gray-sheet"] {
+  --data-color-prime: 29, 22, 22;
+  --data-color-second: 142, 22, 22;
+  --data-color-third: 216, 64, 64;
+  --data-color-final: 238, 238, 238;
 }
 
-/* overflow hidden to perform the animation of the landing page */
-
-/* body {
-  overflow: hidden;
-  animation: enableScroll 1s ease-in-out 4.5s forwards;
+[data-theme="purple-valley"] {
+  --data-color-prime: 66, 72, 116;
+  --data-color-second: 220, 214, 247;
+  --data-color-third: 244, 238, 255;
+  --data-color-final: 166, 177, 225;
 }
-@keyframes enableScroll {
-  0% {
-    overflow: hidden;
-  }
-  100% {
-    overflow: auto;
-  }
-} */
+
+[data-theme="bee-fly"] {
+  --data-color-prime: 170, 150, 218;
+  --data-color-second: 168, 216, 234;
+  --data-color-third: 252, 186, 211;
+  --data-color-final: 255, 255, 210;
+}
+
+[data-theme="dark"] {
+  --data-color-prime: 238, 238, 238;
+  --data-color-second: 142, 22, 22;
+  --data-color-third: 216, 64, 64;
+  --data-color-final: 29, 22, 22;
+}
 
 /* custom css */
-@theme {
+@theme inline {
   /* colors */
-  --color-prime: var(--color-prime);
-  --color-second: var(--color-second);
-  --color-third: var(--color-thied);
-  --color-final: var(--color-final);
+  --color-prime: rgba(var(--data-color-prime), 1);
+  --color-second: rgba(var(--data-color-second), 1);
+  --color-third: rgba(var(--data-color-third), 1);
+  --color-final: rgba(var(--data-color-final), 1);
 
   /* font family */
   --font-roboto: "Roboto", sans-serif;
@@ -50,31 +59,51 @@
 }
 
 /* tailwind custom classes */
-.site-view {
-  /* page basic style */
-  @apply font-roboto max-w-7xl min-h-dvh mx-auto bg-final text-prime;
+@layer base {
+  body {
+    /* overflow: hidden;
+    animation: enableScroll 1s ease-in-out 4.5s forwards; */
+
+    @apply font-roboto;
+  }
 }
 
-.btn-prime {
-  /* basic button */
-  @apply text-fluid text-final font-medium bg-third px-fluid py-fluid-xs rounded-md transition-colors duration-300 hover:bg-second cursor-pointer;
+@layer components {
+  .site-view {
+    @apply max-w-7xl min-h-dvh mx-auto bg-final text-prime;
+  }
+
+  .btn-prime {
+    @apply text-fluid text-final font-medium bg-third px-fluid py-fluid-xs rounded-md transition-colors duration-300 hover:bg-second cursor-pointer;
+  }
+
+  .btn-second {
+    @apply text-fluid text-final font-medium bg-prime border-2 border-transparent px-fluid py-fluid-xs rounded-md transition-colors duration-300 hover:bg-final hover:text-prime hover:border-prime cursor-pointer;
+  }
+
+  .btn-third {
+    @apply text-fluid text-prime font-medium bg-final border-2 border-prime px-fluid py-fluid-xs rounded-md transition-colors duration-300 hover:bg-prime hover:text-final cursor-pointer;
+  }
+
+  .links {
+    @apply text-third hover:underline hover:text-second;
+  }
 }
 
-.btn-second {
-  /* secondary button */
-  @apply text-fluid text-final font-medium bg-prime border-2 border-transparent px-fluid py-fluid-xs rounded-md transition-colors duration-300 hover:bg-final hover:text-prime hover:border-2 hover:border-prime cursor-pointer;
+@layer utilities {
+  .text-gradient {
+    @apply inline-block bg-clip-text text-transparent bg-gradient-to-r;
+  }
 }
 
-.btn-third {
-  /* third button */
-  @apply text-fluid text-prime font-medium bg-final border-2 border-prime px-fluid py-fluid-xs rounded-md transition-colors duration-300 hover:bg-prime hover:text-final cursor-pointer;
-}
+/* Animation key frames */
 
-.links {
-  /* links common property */
-  @apply text-third hover:underline hover:text-second;
-}
-
-.text-gradient {
-  @apply inline-block bg-clip-text text-transparent bg-gradient-to-r;
-}
+/*
+@keyframes enableScroll {
+  0% {
+    overflow: hidden;
+  }
+  100% {
+    overflow: auto;
+  }
+} */

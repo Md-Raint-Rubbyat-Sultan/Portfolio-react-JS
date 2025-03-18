@@ -32,7 +32,7 @@ const ScrollToTopButton = () => {
       {showButton && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-4 right-4 bg-third text-white p-fluid rounded-full shadow-lg hover:bg-second transition-colors duration-300 cursor-pointer"
+          className="fixed bottom-4 right-4 bg-third text-white p-fluid rounded-full shadow-lg hover:bg-second transition-colors duration-300 cursor-pointer z-40"
         >
           <IoMdRocket />
         </button>

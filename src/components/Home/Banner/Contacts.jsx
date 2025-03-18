@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router";
+import { FaLinkedin } from "react-icons/fa";
+import { IoIosCall } from "react-icons/io";
+import { IoMail } from "react-icons/io5";
 
 const Contacts = () => {
   return (
@@ -12,24 +15,23 @@ const Contacts = () => {
       </div>
       <div className="p-fluid-m text-fluid">
         <p>
-          <span className="font-bold">Name: </span>
-          <span>Md. Ranit Rubbyat Sultan</span>
+          <span className="font-bold">Md. Ranit Rubbyat Sultan</span>
         </p>
-        <p>
-          <span className="font-bold">Contact: </span>
+        <p className="flex justify-items-start items-center gap-fluid-xs">
+          <IoIosCall className="font-bold" />
           <span>+8801831495895</span>
         </p>
-        <p>
-          <span className="font-bold">Email: </span>
+        <p className="flex flex-wrap justify-items-start items-center gap-fluid-xs">
+          <IoMail className="font-bold" />
           <span>mdranitrubbyatsultan@gmail.com</span>
         </p>
-        <p className="line-clamp-1">
-          <span className="font-bold">LinkedIN: </span>
+        <p className="flex flex-wrap justify-items-start items-center gap-fluid-xs">
+          <FaLinkedin className="font-bold" />
           <span>
             <Link
               to={"https://www.linkedin.com/in/ranit-rubbyat-sultan-khan/"}
               target="_blank"
-              className="links"
+              className="links line-clamp-1"
             >
               linkedin.com/in/ranit-rubbyat-sultan-khan
             </Link>

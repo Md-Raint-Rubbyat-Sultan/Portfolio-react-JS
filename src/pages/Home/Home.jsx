@@ -5,11 +5,11 @@ import MyProjects from "../../components/Home/Projects/MyProjects";
 
 const Home = () => {
   return (
-    <div>
+    <section>
       <Banner />
       <Skills />
       <MyProjects />
-    </div>
+    </section>
   );
 };
 

@@ -4,7 +4,7 @@ import Loading from "../../components/shared/Loading/Loading";
 
 const ErrorPage = () => {
   return (
-    <div className="font-roboto">
+    <section className="font-roboto">
       <div className="flex flex-col justify-center items-center h-screen">
         <p className="text-fluid-l text-third">404</p>
         <p className="text-fluid-m">page not found!</p>
@@ -14,7 +14,7 @@ const ErrorPage = () => {
           </Link>
         </span>
       </div>
-    </div>
+    </section>
   );
 };
 
