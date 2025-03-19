@@ -18,9 +18,10 @@ const MySkills = () => {
   const techObj = adminData?.technical_skills?.flatMap((skill) =>
     Object.values(skill).flat()
   );
+  const justTech = techObj?.filter?.((tech) => typeof tech !== "string");
 
   const handelShowAll = () => {
-    setNumOfSkills(techObj?.length);
+    setNumOfSkills(justTech?.length);
   };
 
   return (
@@ -29,7 +30,7 @@ const MySkills = () => {
         <legend className="px-fluid text-fluid font-semibold">Skills</legend>
         {/* add skills */}
         <div className="space-y-fluid-m">
-          {techObj?.slice(0, numOfSkills)?.map((tech, idx) => (
+          {justTech?.slice(0, numOfSkills)?.map((tech, idx) => (
             <SkillsCard
               key={idx}
               logo={tech?.logo}
@@ -38,7 +39,7 @@ const MySkills = () => {
             />
           ))}
         </div>
-        {numOfSkills !== techObj?.length && (
+        {numOfSkills !== justTech?.length && (
           <button
             onClick={handelShowAll}
             className="btn-third absolute left-1/2 top-full -translate-x-1/2 -translate-y-1/2"
