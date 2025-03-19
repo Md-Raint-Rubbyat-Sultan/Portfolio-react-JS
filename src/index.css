@@ -11,6 +11,13 @@
   --data-color-final: 238, 238, 238;
 }
 
+[data-theme="so-light"] {
+  --data-color-prime: 39, 35, 67;
+  --data-color-second: 227, 246, 245;
+  --data-color-third: 186, 232, 232;
+  --data-color-final: 255, 255, 255;
+}
+
 [data-theme="purple-valley"] {
   --data-color-prime: 66, 72, 116;
   --data-color-second: 220, 214, 247;

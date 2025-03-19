@@ -5,6 +5,11 @@ const Themes = [
     textClr: "rgb(29, 22, 22)",
   },
   {
+    name: "so-light",
+    bgClr: "rgb(255, 255, 255)",
+    textClr: "rgb(39, 35, 67)",
+  },
+  {
     name: "purple-valley",
     bgClr: "rgb(166, 177, 225)",
     textClr: "rgb(66, 72, 116)",
