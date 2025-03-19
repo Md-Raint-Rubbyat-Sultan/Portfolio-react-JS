@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router";
 import NavThemeButton from "./NavThemeButton/NavThemeButton";
 import OnScrollNav from "./OnScrollNav/OnScrollNav";
+import { FaHome, FaTasks } from "react-icons/fa";
+import { IoMdColorPalette } from "react-icons/io";
 
 const Navbar = () => {
   const [showFixedNav, setShowFixedNav] = useState(false);
@@ -44,19 +46,30 @@ const Navbar = () => {
       >
         {/* home */}
         <NavLink to="/" className={activeLinks}>
-          Home
+          <div className="flex items-center gap-fluid-xs">
+            <FaHome />
+            <span>Home</span>
+          </div>
         </NavLink>
         {/* about */}
         <NavLink to="/about" className={activeLinks}>
-          About
+          <div className="flex items-center gap-fluid-xs">
+            <FaTasks />
+            <span>About</span>
+          </div>
         </NavLink>
         {/* theme */}
-        <button
-          onClick={handelThemeToggle}
-          className={`${toggle ? "text-second" : "text-third "} cursor-pointer`}
-        >
-          Themes
-        </button>
+        <div>
+          <button
+            onClick={handelThemeToggle}
+            className={`${
+              toggle ? "text-second" : "text-third "
+            } flex items-center gap-fluid-xs cursor-pointer`}
+          >
+            <IoMdColorPalette />
+            <span className={`${toggle && "underline"}`}>Themes</span>
+          </button>
+        </div>
         <NavThemeButton toggle={toggle} setToggle={setToggle} />
       </nav>
 
