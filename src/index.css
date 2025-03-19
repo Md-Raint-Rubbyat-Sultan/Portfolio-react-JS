@@ -25,7 +25,14 @@
   --data-color-final: 255, 255, 210;
 }
 
-[data-theme="dark"] {
+[data-theme="olive-silor"] {
+  --data-color-prime: 98, 111, 71;
+  --data-color-second: 255, 207, 80;
+  --data-color-third: 164, 180, 101;
+  --data-color-final: 254, 250, 224;
+}
+
+[data-theme="dark-sheet"] {
   --data-color-prime: 238, 238, 238;
   --data-color-second: 142, 22, 22;
   --data-color-third: 216, 64, 64;
