@@ -105,7 +105,6 @@
 
 /* Animation key frames */
 
-/*
 @keyframes enableScroll {
   0% {
     overflow: hidden;
@@ -113,4 +112,4 @@
   100% {
     overflow: auto;
   }
-} */
+}
