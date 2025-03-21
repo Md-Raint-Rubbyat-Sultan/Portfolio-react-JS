@@ -1,8 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ProjectsCards from "../../shared/ProjectCards/ProjectsCards";
+import getAllProjects from "../../../API/GET/getAllProjects";
+import Loading from "../../shared/Loading/Loading";
 
 const Projects = ({ allProjects }) => {
+  const [allProject, isLoading] = getAllProjects(5);
+  console.log(allProject);
+
+  if (isLoading) return <Loading />;
+
   return (
     <div className="space-y-fluid-m">
       {allProjects?.map((project, idx) => (
