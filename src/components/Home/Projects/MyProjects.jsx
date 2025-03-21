@@ -1,25 +1,33 @@
 import React, { useState } from "react";
 import Projects from "./Projects";
+import getAllProjects from "../../../API/GET/getAllProjects";
+import Loading from "../../shared/Loading/Loading";
 import projectsDB from "/public/db/ProjectsDB.js";
 
 const MyProjects = () => {
   const [showBtn, setShowBtn] = useState(true);
-  const [projectDbLength, setProjectDbLength] = useState(5);
+  const [projectsLength, setProjectDbLength] = useState(3);
+  // get the data
+  const [allProject, isLoading] = getAllProjects(projectsLength);
 
   const handelShowAll = () => {
-    setProjectDbLength(projectsDB.length);
+    setProjectDbLength(allProject?.countProject);
     setShowBtn((prev) => !prev);
   };
+
+  console.log(allProject);
+
+  if (isLoading) return <Loading />;
 
   return (
     <section className="mb-fluid-l space-y-fluid-m">
       <h1 className="text-fluid-m font-semibold">Projects</h1>
 
       {/* projects cards */}
-      <Projects allProjects={projectsDB.slice(0, projectDbLength)} />
+      <Projects allProjects={allProject?.data} />
 
       {/* show all the projects uploded */}
-      {showBtn && projectsDB.length > 5 && (
+      {showBtn && projectsDB.length > 3 && (
         <div className="text-center">
           <button onClick={handelShowAll} className="btn-third">
             Show All
