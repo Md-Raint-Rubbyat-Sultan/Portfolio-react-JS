@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import SkillsCard from "./SkillsCard";
-import projectsDB from "/public/db/ProjectsDB.js";
+import getProtfolioImg from "../../../API/GET/getProtfolioImg";
+import Loading from "../../shared/Loading/Loading";
 
 const ProjectSkills = () => {
   const [numOfSkills, setNumOfSkills] = useState(5);
-  const portfolio = projectsDB.filter(
-    (project) => project?.name === "Portfolio"
-  );
+  const [portfolio, isLoading] = getProtfolioImg();
 
-  const techObj = portfolio[0]?.technologies?.flatMap((skill) =>
+  if (isLoading) return <Loading />;
+
+  const techObj = portfolio?.technologies?.flatMap((skill) =>
     Object.values(skill).flat()
   );
 

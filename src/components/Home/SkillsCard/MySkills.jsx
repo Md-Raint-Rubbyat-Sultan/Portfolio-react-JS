@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from "react";
 import SkillsCard from "./SkillsCard";
+import getAdminTech from "../../../API/GET/getAdminTech";
+import Loading from "../../shared/Loading/Loading";
 
 const MySkills = () => {
   const [numOfSkills, setNumOfSkills] = useState(5);
-  const [adminData, setAdminData] = useState({});
+  const [adminData, isLoading] = getAdminTech();
 
-  const getAdminData = async () => {
-    const req = await fetch("./public/db/adminData.json");
-    const res = await req.json();
-    setAdminData(res);
-  };
-
-  useEffect(() => {
-    getAdminData();
-  }, []);
+  if (isLoading) return <Loading />;
 
   const techObj = adminData?.technical_skills?.flatMap((skill) =>
     Object.values(skill).flat()

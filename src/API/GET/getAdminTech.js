@@ -3,20 +3,21 @@ import useAxios from "../../CustomHooks/useAxios/useAxios";
 import toast from "react-hot-toast";
 import details from "../../Constants/toastDetails";
 
-const getAllProjects = (lim = 5) => {
+const getAdminTech = () => {
   const url = useAxios();
-  const { data: allProjects, isLoading } = useQuery({
-    queryKey: ["All_Projects", lim],
+
+  const { data: adminTech, isLoading } = useQuery({
+    queryKey: ["admin-tech"],
     queryFn: async () => {
       try {
-        const { data } = await url.get(`/projects/all-projects?lim=${lim}`);
+        const { data } = await url.get("/adminData/adminTech");
         return data;
       } catch (error) {
         toast(error.message, details("top-center", "❌​​"));
       }
     },
   });
-  return [allProjects, isLoading];
+  return [adminTech, isLoading];
 };
 
-export default getAllProjects;
+export default getAdminTech;

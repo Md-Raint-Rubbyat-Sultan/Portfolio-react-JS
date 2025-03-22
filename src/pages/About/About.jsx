@@ -9,23 +9,17 @@ import { Link } from "react-router";
 import TechSkills from "../../components/shared/TechSkills/TechSkills";
 import ProjectsCards from "../../components/shared/ProjectCards/ProjectsCards";
 import toCapital from "../../Constants/toCapital";
-import projectsDB from "/public/db/ProjectsDB.js";
 import handleDownloadPDF from "../../Constants/handelDownloadPDF";
+import projectsDB from "/public/db/ProjectsDB.js";
+import getAdminData from "../../API/GET/getAdminData";
+import getAllProjects from "../../API/GET/getAllProjects";
+import Loading from "../../components/shared/Loading/Loading";
 
 const About = () => {
-  const [adminData, setAdminData] = useState({});
+  const [adminData, isLoading] = getAdminData();
+  const [allProject, isProjectLoading] = getAllProjects("");
 
-  const getAdminData = async () => {
-    const req = await fetch("./public/db/adminData.json");
-    const res = await req.json();
-    setAdminData(res);
-  };
-
-  useEffect(() => {
-    getAdminData();
-  }, []);
-
-  // console.log(adminData);
+  if (isLoading || isProjectLoading) return <Loading />;
 
   return (
     <section className="my-fluid-m space-y-fluid relative">
@@ -177,10 +171,10 @@ const About = () => {
                   <div className="border-l border-t border-prime relative">
                     <FaRegCircle className="text-fluid-xs bg-final rounded-full absolute top-1/2 -translate-y-1/2 -translate-x-1/2" />
                     <div className="pl-fluid pt-fluid">
-                      {projectsDB?.map((project, idx) => (
+                      {allProject?.data?.map((project, idx) => (
                         <ProjectsCards
                           key={idx}
-                          id={project?.id}
+                          id={project?._id}
                           name={project?.name}
                           clintSite={project?.clintSite}
                           serverSite={project?.serverSite}

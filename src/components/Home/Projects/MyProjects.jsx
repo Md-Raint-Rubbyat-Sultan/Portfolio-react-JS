@@ -15,8 +15,6 @@ const MyProjects = () => {
     setShowBtn((prev) => !prev);
   };
 
-  console.log(allProject);
-
   if (isLoading) return <Loading />;
 
   return (

@@ -8,7 +8,7 @@ const Projects = ({ allProjects }) => {
       {allProjects?.map((project, idx) => (
         <ProjectsCards
           key={idx}
-          id={project?.id}
+          id={project?._id}
           name={project?.name}
           clintSite={project?.clintSite}
           serverSite={project?.serverSite}

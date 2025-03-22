@@ -1,4 +1,4 @@
-const success = (
+const details = (
   pos = "top-center",
   icon = "🔥",
   dura = 4000,
@@ -13,4 +13,4 @@ const success = (
   };
 };
 
-export default success;
+export default details;
