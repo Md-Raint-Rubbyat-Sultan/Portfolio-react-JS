@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <QueryClientProvider client={queryClient}>
       <ThemeContext>
         <BrowserRouter>
-          {/* <OpeningAnimation /> */}
+          <OpeningAnimation />
           <RouterDom />
           <Toaster />
         </BrowserRouter>

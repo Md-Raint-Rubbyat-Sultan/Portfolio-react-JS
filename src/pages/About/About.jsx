@@ -10,7 +10,6 @@ import TechSkills from "../../components/shared/TechSkills/TechSkills";
 import ProjectsCards from "../../components/shared/ProjectCards/ProjectsCards";
 import toCapital from "../../Constants/toCapital";
 import handleDownloadPDF from "../../Constants/handelDownloadPDF";
-import projectsDB from "/public/db/ProjectsDB.js";
 import getAdminData from "../../API/GET/getAdminData";
 import getAllProjects from "../../API/GET/getAllProjects";
 import Loading from "../../components/shared/Loading/Loading";
@@ -25,7 +24,7 @@ const About = () => {
     <section className="my-fluid-m space-y-fluid relative">
       <div className="text-right">
         <button
-          onClick={() => handleDownloadPDF(adminData, projectsDB)}
+          onClick={() => handleDownloadPDF(adminData, allProject?.data)}
           className="btn-prime"
         >
           Download My Resume

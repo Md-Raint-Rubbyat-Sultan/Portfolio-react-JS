@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Projects from "./Projects";
 import getAllProjects from "../../../API/GET/getAllProjects";
 import Loading from "../../shared/Loading/Loading";
-import projectsDB from "/public/db/ProjectsDB.js";
 
 const MyProjects = () => {
   const [showBtn, setShowBtn] = useState(true);
@@ -25,7 +24,7 @@ const MyProjects = () => {
       <Projects allProjects={allProject?.data} />
 
       {/* show all the projects uploded */}
-      {showBtn && projectsDB.length > 3 && (
+      {showBtn && allProject?.countProject > 3 && (
         <div className="text-center">
           <button onClick={handelShowAll} className="btn-third">
             Show All
