@@ -75,8 +75,8 @@
 /* tailwind custom classes */
 @layer base {
   body {
-    overflow: hidden;
-    animation: enableScroll 1s ease-in-out 4.5s forwards;
+    /* overflow: hidden;
+    animation: enableScroll 1s ease-in-out 4.5s forwards; */
 
     @apply font-roboto;
   }

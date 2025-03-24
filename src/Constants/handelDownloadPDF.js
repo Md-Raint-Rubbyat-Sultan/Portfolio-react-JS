@@ -159,15 +159,16 @@ const handleDownloadPDF = async (adminData, projectsDB) => {
     // Check the structure of technologies
 
     adminData?.technical_skills?.forEach((category) => {
-      const categoryName = Object.keys(category)[0]; // e.g., "frontend", "backend"
-      const skills = category[categoryName]; // Array of skills
+      // const categoryName = Object.keys(category)[0]; // e.g., "frontend", "backend"
+      const skills = category?.tech; // Array of skills
+      console.log(skills);
 
       // Add category name
-      y = addText(`${toCapital(categoryName)}:`, 50, y, 12, textColor);
+      y = addText(`${toCapital(category?.category)}:`, 50, y, 12, textColor);
       y -= 10; // Space after category name
 
       // Add skills
-      skills.forEach((skill) => {
+      skills?.forEach((skill) => {
         const skillText = skill.level
           ? `- ${skill.name} (${toCapital(skill.level)})`
           : `- ${skill.name}`;
@@ -269,7 +270,7 @@ const handleDownloadPDF = async (adminData, projectsDB) => {
       }
 
       y = addText(
-        `Description: ${project.description}`,
+        `Description: ${project?.description || "NO DESCRIPTION TO MENTION."}`,
         50,
         y,
         12,

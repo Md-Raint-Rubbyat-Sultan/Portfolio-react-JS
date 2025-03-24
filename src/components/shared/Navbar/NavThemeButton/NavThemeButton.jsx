@@ -1,14 +1,27 @@
-import React, { useContext } from "react";
-
-import { ThemeProvider } from "../../../../contextApis/ThemeContext/ThemeContext";
+import React, { useEffect, useState } from "react";
 import Themes from "../../../../Constants/Themes";
 import toCapital from "../../../../Constants/toCapital";
 import { MdCancelPresentation } from "react-icons/md";
 
 const NavThemeButton = ({ toggle, setToggle }) => {
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme"));
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme || "gray-sheet");
+
+    const selectTheme = localStorage.getItem("theme");
+
+    if (selectTheme) {
+      document.body.setAttribute("data-theme", selectTheme);
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.body.setAttribute("data-theme", "dark");
+    } else {
+      document.body.setAttribute("data-theme", theme);
+    }
+  }, [theme]);
+
   // themes
   const themes = Themes;
-  const { setTheme } = useContext(ThemeProvider);
   // handel set the theme
   const handelTheme = (themeName) => {
     setTheme(themeName);
@@ -31,17 +44,17 @@ const NavThemeButton = ({ toggle, setToggle }) => {
           />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-fluid">
-          {themes?.map((theme) => (
+          {themes?.map((thm) => (
             <button
-              key={theme?.name}
-              onClick={() => handelTheme(theme.name)}
+              key={thm?.name}
+              onClick={() => handelTheme(thm.name)}
               style={{
-                color: `${theme.textClr}`,
-                backgroundColor: `${theme.bgClr}`,
+                color: `${thm.textClr}`,
+                backgroundColor: `${thm.bgClr}`,
               }}
               className="text-fluid-xs py-fluid-xs px-fluid w-fi border-2 border-prime rounded cursor-pointer"
             >
-              {theme?.name.split("-").map((nm) => toCapital(nm) + " ")}
+              {thm?.name.split("-").map((nm) => toCapital(nm) + " ")}
             </button>
           ))}
         </div>
