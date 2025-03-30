@@ -7,10 +7,8 @@ const MySkills = () => {
   const [numOfSkills, setNumOfSkills] = useState(5);
   const [adminData, isLoading] = getAdminTech();
 
-  if (isLoading) return <Loading />;
-
   const techObj = adminData?.technical_skills?.flatMap((skill) =>
-    Object.values(skill).flat()
+    Object?.values(skill)?.flat()
   );
   const justTech = techObj?.filter?.((tech) => typeof tech !== "string");
 
@@ -22,17 +20,20 @@ const MySkills = () => {
     <div className="order-2 md:order-1">
       <fieldset className="border-2 border-prime p-fluid rounded-md relative">
         <legend className="px-fluid text-fluid font-semibold">Skills</legend>
-        {/* add skills */}
-        <div className="space-y-fluid-m">
-          {justTech?.slice(0, numOfSkills)?.map((tech, idx) => (
-            <SkillsCard
-              key={idx}
-              logo={tech?.logo}
-              name={tech?.name}
-              level={tech?.level}
-            />
-          ))}
-        </div>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <div className="space-y-fluid-m">
+            {justTech?.slice(0, numOfSkills)?.map((tech, idx) => (
+              <SkillsCard
+                key={idx}
+                logo={tech?.logo}
+                name={tech?.name}
+                level={tech?.level}
+              />
+            ))}
+          </div>
+        )}
         {numOfSkills !== justTech?.length && (
           <button
             onClick={handelShowAll}

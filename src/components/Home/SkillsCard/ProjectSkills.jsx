@@ -7,8 +7,6 @@ const ProjectSkills = () => {
   const [numOfSkills, setNumOfSkills] = useState(5);
   const [portfolio, isLoading] = getProtfolioImg();
 
-  if (isLoading) return <Loading />;
-
   const techObj = portfolio?.technologies?.flatMap((skill) =>
     Object.values(skill).flat()
   );
@@ -25,16 +23,20 @@ const ProjectSkills = () => {
         <legend className="px-fluid text-fluid text-wrap font-semibold">
           Skills Used In This Project
         </legend>
-        <div className="space-y-fluid-m">
-          {justTech?.slice(0, numOfSkills)?.map((tech, idx) => (
-            <SkillsCard
-              key={idx}
-              logo={tech?.logo}
-              name={tech?.name}
-              level={null}
-            />
-          ))}
-        </div>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <div className="space-y-fluid-m">
+            {justTech?.slice(0, numOfSkills)?.map((tech, idx) => (
+              <SkillsCard
+                key={idx}
+                logo={tech?.logo}
+                name={tech?.name}
+                level={null}
+              />
+            ))}
+          </div>
+        )}
         {numOfSkills !== justTech?.length && (
           <button
             onClick={handelShowAll}
