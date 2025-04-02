@@ -7,6 +7,7 @@ import OpeningAnimation from "./OpeningAnimation";
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AuthProvider from "./contextApis/AuthContext/AuthProvider";
+import ThemeProvider from "./contextApis/ThemeContext/ThemeContext";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -15,11 +16,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <BrowserRouter>
-          {/* <OpeningAnimation /> */}
-          <RouterDom />
-          <Toaster />
-        </BrowserRouter>
+        <ThemeProvider>
+          <BrowserRouter>
+            {/* <OpeningAnimation /> */}
+            <RouterDom />
+            <Toaster />
+          </BrowserRouter>
+        </ThemeProvider>
       </AuthProvider>
     </QueryClientProvider>
   </React.StrictMode>

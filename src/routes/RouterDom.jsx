@@ -7,10 +7,13 @@ import ProjectDetails from "../pages/Home/ProjectDetails/ProjectDetails";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Loading from "../components/shared/Loading/Loading";
 import PrivetRoute from "./PrivetRoute";
+import AuthLayout from "../layout/auth/AuthLayout";
+import Login from "../pages/Login/Login";
 
 const RouterDom = () => {
   return (
     <Routes>
+      {/* main layout */}
       <Route path="/" element={<MainLayout />}>
         <Route
           index
@@ -39,6 +42,11 @@ const RouterDom = () => {
           }
         />
       </Route>
+      {/* auth layout */}
+      <Route path="/auth" element={<AuthLayout />}>
+        <Route path="/auth/login" element={<Login />} />
+      </Route>
+      {/* error page */}
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   );

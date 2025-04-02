@@ -50,9 +50,11 @@
 @theme inline {
   /* colors */
   --color-prime: rgba(var(--data-color-prime), 1);
+  --color-prime-semi: rgba(var(--data-color-prime), 0.5);
   --color-second: rgba(var(--data-color-second), 1);
   --color-third: rgba(var(--data-color-third), 1);
   --color-final: rgba(var(--data-color-final), 1);
+  --color-final-semi: rgba(var(--data-color-final), 0.5);
 
   /* font family */
   --font-roboto: "Roboto", sans-serif;
@@ -83,10 +85,6 @@
 }
 
 @layer components {
-  .site-view {
-    @apply max-w-7xl min-h-dvh mx-auto bg-final text-prime;
-  }
-
   .btn-prime {
     @apply text-fluid text-final font-medium bg-third px-fluid py-fluid-xs rounded-md transition-colors duration-300 hover:bg-second cursor-pointer;
   }
@@ -105,6 +103,10 @@
 }
 
 @layer utilities {
+  .site-view {
+    @apply max-w-7xl min-h-dvh mx-auto bg-final text-prime;
+  }
+
   .text-gradient {
     @apply inline-block bg-clip-text text-transparent bg-gradient-to-r;
   }

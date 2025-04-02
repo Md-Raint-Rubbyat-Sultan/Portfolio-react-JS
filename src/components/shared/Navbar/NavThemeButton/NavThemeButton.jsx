@@ -1,27 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Themes from "../../../../Constants/Themes";
 import toCapital from "../../../../Constants/toCapital";
 import { MdCancelPresentation } from "react-icons/md";
+import useThemeContext from "../../../../CustomHooks/useThemeContext/useThemeContext";
 
 const NavThemeButton = ({ toggle, setToggle }) => {
-  const [theme, setTheme] = useState(() => localStorage.getItem("theme"));
-
-  useEffect(() => {
-    localStorage.setItem("theme", theme || "gray-sheet");
-
-    const selectTheme = localStorage.getItem("theme");
-
-    if (selectTheme) {
-      document.body.setAttribute("data-theme", selectTheme);
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      document.body.setAttribute("data-theme", "dark");
-    } else {
-      document.body.setAttribute("data-theme", theme);
-    }
-  }, [theme]);
+  const { setTheme } = useThemeContext();
 
   // themes
   const themes = Themes;
+
   // handel set the theme
   const handelTheme = (themeName) => {
     setTheme(themeName);
@@ -34,7 +22,6 @@ const NavThemeButton = ({ toggle, setToggle }) => {
         toggle ? "left-[5%]" : "-left-[100%]"
       } transition-all overflow-y-auto z-40`}
     >
-      {/* flex flex-row-reverse justify-start items-start gap-fluid  */}
       <div className="max-h-80 relative">
         <div className="flex justify-between items-center gap-fluid mb-fluid-m text-fluid-m">
           <p className="text-third">Select Theme</p>
