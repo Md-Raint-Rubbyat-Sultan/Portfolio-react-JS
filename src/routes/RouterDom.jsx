@@ -6,6 +6,7 @@ import About from "../pages/About/About";
 import ProjectDetails from "../pages/Home/ProjectDetails/ProjectDetails";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Loading from "../components/shared/Loading/Loading";
+import PrivetRoute from "./PrivetRoute";
 
 const RouterDom = () => {
   return (
@@ -31,7 +32,9 @@ const RouterDom = () => {
           path="/details/:id"
           element={
             <Suspense fallback={<Loading />}>
-              <ProjectDetails />
+              <PrivetRoute>
+                <ProjectDetails />
+              </PrivetRoute>
             </Suspense>
           }
         />

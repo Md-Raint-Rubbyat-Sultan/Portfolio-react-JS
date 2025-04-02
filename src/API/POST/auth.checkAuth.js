@@ -11,9 +11,12 @@ const checkAuth = () => {
   } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
-      const { data } = await urlSecure.post("/check-auth");
+      const { data } = await urlSecure.post("/auth/check-auth");
+
+      if (!data) return null;
       return data;
     },
+    retry: 1,
   });
   return [user, isLoading, refetch];
 };

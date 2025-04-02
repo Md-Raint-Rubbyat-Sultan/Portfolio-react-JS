@@ -19,52 +19,64 @@ const facebookProvider = new FacebookAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, isUserLoading, refetch] = checkAuth();
-  const [isLoading, setIsloading] = useState(false); // set this to false after login, register or even logout
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const login = (email, password) => {
-    setIsloading(true);
-    return authLogin(email, password);
+  const handleAuthOperation = async (operation) => {
+    // callback to better perform
+    setIsLoading(true);
+    setError(null);
+    try {
+      const result = await operation();
+      return result;
+    } catch (err) {
+      setError(err.message || "Authentication failed");
+      throw err;
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  // providers login
+  const login = (email, password) => {
+    return handleAuthOperation(() => authLogin(email, password));
+  };
+
   const loginWithGoogle = () => {
-    setIsloading(true);
-    return signInWithPopup(auth, googleProvider);
+    return handleAuthOperation(() => signInWithPopup(auth, googleProvider));
   };
 
   const loginWithFacebook = () => {
-    setIsloading(true);
-    return signInWithPopup(auth, facebookProvider);
+    return handleAuthOperation(() => signInWithPopup(auth, facebookProvider));
   };
 
   const register = (fullName, email, password) => {
-    setIsloading(true);
-    return authRegister(fullName, email, password);
+    return handleAuthOperation(() => authRegister(fullName, email, password));
   };
 
   const verifyEmail = (email) => {
-    setIsloading(true);
-    return authVerifyEmail(email);
+    return handleAuthOperation(() => authVerifyEmail(email));
   };
 
   const logout = () => {
-    setIsloading(true);
-    return authLogout(); // this will give an arry of logout info and is loading state.
+    return handleAuthOperation(() => authLogout());
   };
 
   const info = {
     user,
     isUserLoading,
     refetch,
+    isLoading,
+    setIsLoading,
+    error,
     verifyEmail,
     register,
     login,
     loginWithGoogle,
     loginWithFacebook,
     logout,
-    isLoading,
-    setIsloading,
+    clearError: () => setError(null),
   };
+
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;
 };
 

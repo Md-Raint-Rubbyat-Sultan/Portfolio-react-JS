@@ -36,14 +36,14 @@ const NavThemeButton = ({ toggle, setToggle }) => {
     >
       {/* flex flex-row-reverse justify-start items-start gap-fluid  */}
       <div className="max-h-80 relative">
-        <div className="flex justify-between items-center mb-fluid-m text-fluid-m">
+        <div className="flex justify-between items-center gap-fluid mb-fluid-m text-fluid-m">
           <p className="text-third">Select Theme</p>
           <MdCancelPresentation
             onClick={() => setToggle((prev) => !prev)}
             className="cursor-pointer"
           />
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-fluid">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-fluid mb-fluid">
           {themes?.map((thm) => (
             <button
               key={thm?.name}
