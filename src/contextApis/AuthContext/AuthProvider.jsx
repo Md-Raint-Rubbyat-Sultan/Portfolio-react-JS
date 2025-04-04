@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import React, { createContext } from "react";
+import { useMutation } from "@tanstack/react-query";
 import checkAuth from "../../API/POST/auth.checkAuth";
 import authLogout from "../../API/POST/auth.logout";
 import authLogin from "../../API/POST/auth.login";
@@ -18,63 +19,53 @@ const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
 
 const AuthProvider = ({ children }) => {
+  // Check auth status (this uses useQuery internally)
   const [user, isUserLoading, refetch] = checkAuth();
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
 
-  const handleAuthOperation = async (operation) => {
-    // callback to better perform
-    setIsLoading(true);
-    setError(null);
-    try {
-      const result = await operation();
-      return result;
-    } catch (err) {
-      setError(err.message || "Authentication failed");
-      throw err;
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  // Auth operations will use useMutation
+  const { mutateAsync: login, isLoading: isLoginLoading } = useMutation({
+    mutationFn: ({ email, password }) => authLogin(email, password),
+  });
 
-  const login = (email, password) => {
-    return handleAuthOperation(() => authLogin(email, password));
-  };
+  const { mutateAsync: register, isLoading: isRegisterLoading } = useMutation({
+    mutationFn: ({ fullName, email, password, profile }) =>
+      authRegister(fullName, email, password, profile),
+  });
+
+  const { mutateAsync: verifyEmail, isLoading: isVerifyLoading } = useMutation({
+    mutationFn: ({ email }) => authVerifyEmail(email),
+  });
+
+  const { mutateAsync: logout, isLoading: isLogoutLoading } = useMutation({
+    mutationFn: () => authLogout(),
+  });
 
   const loginWithGoogle = () => {
-    return handleAuthOperation(() => signInWithPopup(auth, googleProvider));
+    return signInWithPopup(auth, googleProvider);
   };
 
   const loginWithFacebook = () => {
-    return handleAuthOperation(() => signInWithPopup(auth, facebookProvider));
+    return signInWithPopup(auth, facebookProvider);
   };
 
-  const register = (fullName, email, password) => {
-    return handleAuthOperation(() => authRegister(fullName, email, password));
-  };
-
-  const verifyEmail = (email) => {
-    return handleAuthOperation(() => authVerifyEmail(email));
-  };
-
-  const logout = () => {
-    return handleAuthOperation(() => authLogout());
-  };
+  const isLoading =
+    isUserLoading ||
+    isLoginLoading ||
+    isRegisterLoading ||
+    isVerifyLoading ||
+    isLogoutLoading;
 
   const info = {
     user,
+    isLoading,
     isUserLoading,
     refetch,
-    isLoading,
-    setIsLoading,
-    error,
     verifyEmail,
     register,
     login,
     loginWithGoogle,
     loginWithFacebook,
     logout,
-    clearError: () => setError(null),
   };
 
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;

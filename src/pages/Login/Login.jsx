@@ -1,8 +1,42 @@
-import React from "react";
-import { Link, useLocation } from "react-router";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { Link, useLocation, useNavigate } from "react-router";
+import details from "../../Constants/toastDetails";
+import useAuthContext from "../../CustomHooks/useAuthContext/useAuthContext";
+import { IoCloudUpload } from "react-icons/io5";
+import { FiLoader } from "react-icons/fi";
 
 const Login = () => {
   const location = useLocation();
+  const { login, isLoading, refetch } = useAuthContext();
+  const navigate = useNavigate();
+  const [error, setError] = useState(() => {});
+
+  const handelSubmit = async (e) => {
+    e.preventDefault();
+    setError({});
+
+    const form = new FormData(e.currentTarget);
+    const email = form.get("email");
+    const password = form.get("password");
+
+    if (password.length < 6) {
+      setError({ password: "Password must have 6 characters." });
+      return;
+    }
+
+    try {
+      // call login
+      const res = await login({ email, password });
+      if (res) {
+        refetch();
+        navigate(location?.state?.path || "/");
+      }
+    } catch (error) {
+      toast(error.message, details("top-center", "❌​​"));
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -33,14 +67,14 @@ const Login = () => {
             </p>
           </div>
 
-          <form className="max-w-md md:ml-auto w-full">
+          <form onSubmit={handelSubmit} className="max-w-md md:ml-auto w-full">
             <h3 className="text-prime text-fluid-m text font-bold mb-8">
               Login
             </h3>
 
             <div className="space-y-fluid-m">
               <div>
-                <label className="text-sm text-prime font-medium mb-fluid-xs block">
+                <label className="text-fluid-xs text-prime font-medium mb-fluid-xs block">
                   Email
                 </label>
                 <input
@@ -50,6 +84,11 @@ const Login = () => {
                   className="bg-final-semi w-full text-sm text-prime px-4 py-3 rounded-md outline-none border focus:border-prime-semi focus:bg-transparent"
                   placeholder="your_email@gmail.com"
                 />
+                {error?.email && (
+                  <p className="text-fluid-xs text-red-600 font-medium mb-fluid-xs block">
+                    {error?.email}
+                  </p>
+                )}
               </div>
               <div>
                 <label className="text-sm text-prime font-medium mb-fluid-xs block">
@@ -60,8 +99,13 @@ const Login = () => {
                   type="password"
                   required
                   className="bg-final-semi w-full text-sm text-prime px-4 py-3 rounded-md outline-none border focus:border-prime-semi focus:bg-transparent"
-                  placeholder="Enter Password"
+                  placeholder="******"
                 />
+                {error?.password && (
+                  <p className="text-fluid-xs text-red-600 font-medium mb-fluid-xs block">
+                    {error?.password}
+                  </p>
+                )}
               </div>
               <div className="flex flex-wrap items-center justify-between gap-fluid">
                 <div className="flex items-center">
@@ -91,10 +135,20 @@ const Login = () => {
 
             <div className="mt-fluid-l">
               <button
-                type="button"
+                type={isLoading ? "button" : "submit"}
                 className="w-full shadow-xl focus:outline-none btn-prime"
+                disabled={isLoading}
               >
-                Log in
+                {!isLoading ? (
+                  <span className="flex flex-wrap justify-center items-center gap-fluid">
+                    <IoCloudUpload />
+                    Log in
+                  </span>
+                ) : (
+                  <span className="flex justify-center items-center text-fluid text-final font-medium">
+                    <FiLoader className="animate-spin" />
+                  </span>
+                )}
               </button>
             </div>
 
@@ -105,7 +159,10 @@ const Login = () => {
             </div>
 
             <div className="space-x-fluid-m flex justify-center">
-              <button type="button" className="border-none outline-none">
+              <button
+                type="button"
+                className="border-none outline-none cursor-pointer"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-6 h-6"
@@ -143,7 +200,10 @@ const Login = () => {
                   />
                 </svg>
               </button>
-              <button type="button" className="border-none outline-none">
+              <button
+                type="button"
+                className="border-none outline-none cursor-pointer"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-6 h-6"
@@ -159,18 +219,6 @@ const Login = () => {
                     d="M355.65 330 367 256h-71v-48.021c0-20.245 9.918-39.979 41.719-39.979H370v-63s-29.296-5-57.305-5C254.219 100 216 135.44 216 199.6V256h-65v74h65v178.889c13.034 2.045 26.392 3.111 40 3.111s26.966-1.066 40-3.111V330z"
                     data-original="#ffffff"
                   />
-                </svg>
-              </button>
-              <button type="button" className="border-none outline-none">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
-                  viewBox="0 0 22.773 22.773"
-                >
-                  <path
-                    d="M15.769 0h.162c.13 1.606-.483 2.806-1.228 3.675-.731.863-1.732 1.7-3.351 1.573-.108-1.583.506-2.694 1.25-3.561C13.292.879 14.557.16 15.769 0zm4.901 16.716v.045c-.455 1.378-1.104 2.559-1.896 3.655-.723.995-1.609 2.334-3.191 2.334-1.367 0-2.275-.879-3.676-.903-1.482-.024-2.297.735-3.652.926h-.462c-.995-.144-1.798-.932-2.383-1.642-1.725-2.098-3.058-4.808-3.306-8.276v-1.019c.105-2.482 1.311-4.5 2.914-5.478.846-.52 2.009-.963 3.304-.765.555.086 1.122.276 1.619.464.471.181 1.06.502 1.618.485.378-.011.754-.208 1.135-.347 1.116-.403 2.21-.865 3.652-.648 1.733.262 2.963 1.032 3.723 2.22-1.466.933-2.625 2.339-2.427 4.74.176 2.181 1.444 3.457 3.028 4.209z"
-                    data-original="#000000"
-                  ></path>
                 </svg>
               </button>
             </div>

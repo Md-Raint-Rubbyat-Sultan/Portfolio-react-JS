@@ -7,7 +7,6 @@ import Loading from "../../../components/shared/Loading/Loading";
 const ProjectDetails = () => {
   const params = useParams();
   const [singleProject, isLoading] = getSingleProject(params?.id);
-  console.log(singleProject);
 
   if (isLoading) return <Loading />;
 
