@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import checkAuth from "../../API/POST/auth.checkAuth";
 import authLogout from "../../API/POST/auth.logout";
@@ -22,21 +22,23 @@ const AuthProvider = ({ children }) => {
   // Check auth status (this uses useQuery internally)
   const [user, isUserLoading, refetch] = checkAuth();
 
+  const [isLoading, setIsLoading] = useState(false); // Use for only handeling post methods on auth.
+
   // Auth operations will use useMutation
-  const { mutateAsync: login, isLoading: isLoginLoading } = useMutation({
+  const { mutateAsync: login } = useMutation({
     mutationFn: ({ email, password }) => authLogin(email, password),
   });
 
-  const { mutateAsync: register, isLoading: isRegisterLoading } = useMutation({
-    mutationFn: ({ fullName, email, password, profile }) =>
-      authRegister(fullName, email, password, profile),
+  const { mutateAsync: register } = useMutation({
+    mutationFn: ({ fullName, email, password, profilePic, verificationCode }) =>
+      authRegister(fullName, email, password, profilePic, verificationCode),
   });
 
-  const { mutateAsync: verifyEmail, isLoading: isVerifyLoading } = useMutation({
+  const { mutateAsync: verifyEmail } = useMutation({
     mutationFn: ({ email }) => authVerifyEmail(email),
   });
 
-  const { mutateAsync: logout, isLoading: isLogoutLoading } = useMutation({
+  const { mutateAsync: logout } = useMutation({
     mutationFn: () => authLogout(),
   });
 
@@ -48,18 +50,12 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, facebookProvider);
   };
 
-  const isLoading =
-    isUserLoading ||
-    isLoginLoading ||
-    isRegisterLoading ||
-    isVerifyLoading ||
-    isLogoutLoading;
-
   const info = {
     user,
-    isLoading,
     isUserLoading,
     refetch,
+    isLoading,
+    setIsLoading,
     verifyEmail,
     register,
     login,

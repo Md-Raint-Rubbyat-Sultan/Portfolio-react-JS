@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosSecure = axios.create({
-  baseURL: import.meta.env.VITE_PROD_URL,
+  baseURL: import.meta.env.VITE_BASE_URL, //VITE_PROD_URL
   withCredentials: true, // Required for cookies
 });
 

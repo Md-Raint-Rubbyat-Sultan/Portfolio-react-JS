@@ -2,17 +2,36 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router";
 import NavThemeButton from "./NavThemeButton/NavThemeButton";
 import OnScrollNav from "./OnScrollNav/OnScrollNav";
+import useAuthContext from "../../../CustomHooks/useAuthContext/useAuthContext";
 import { FaHome, FaTasks } from "react-icons/fa";
-import { IoMdColorPalette } from "react-icons/io";
+import { IoMdColorPalette, IoMdCreate } from "react-icons/io";
+import { FiLogIn } from "react-icons/fi";
+import { MdLogout } from "react-icons/md";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Navbar = () => {
+  const { user, refetch, logout } = useAuthContext();
   const [showFixedNav, setShowFixedNav] = useState(false);
   const navRef = useRef(null);
+  const queryClient = useQueryClient();
 
   // handle theme toggle
   const [toggle, setToggle] = useState(false);
   const handelThemeToggle = () => {
     setToggle((prev) => !prev);
+  };
+
+  // Handle logout
+  const handleLogout = async () => {
+    try {
+      const { success } = await logout();
+      if (success) {
+        queryClient.removeQueries(["auth-user"]);
+        await refetch();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // handle Scroller
@@ -71,6 +90,37 @@ const Navbar = () => {
           </button>
         </div>
         <NavThemeButton toggle={toggle} setToggle={setToggle} />
+        {user ? (
+          // logout
+          <div>
+            <button
+              onClick={() => handleLogout()}
+              className={
+                "flex items-center gap-fluid-xs text-third focus:text-second focus:underline cursor-pointer"
+              }
+            >
+              <MdLogout />
+              <span>Logout</span>
+            </button>
+          </div>
+        ) : (
+          <>
+            {/* Login */}
+            <NavLink to="/auth/login" className={activeLinks}>
+              <div className="flex items-center gap-fluid-xs">
+                <FiLogIn />
+                <span>Login</span>
+              </div>
+            </NavLink>
+            {/* Register */}
+            <NavLink to="/auth/register" className={activeLinks}>
+              <div className="flex items-center gap-fluid-xs">
+                <IoMdCreate />
+                <span>Sign Up</span>
+              </div>
+            </NavLink>
+          </>
+        )}
       </nav>
 
       {/* Fixed Nav (appears from the top when navbar is 80% out of the viewport) */}

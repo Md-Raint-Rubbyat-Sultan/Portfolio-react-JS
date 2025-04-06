@@ -52,7 +52,9 @@
   --color-prime: rgba(var(--data-color-prime), 1);
   --color-prime-semi: rgba(var(--data-color-prime), 0.5);
   --color-second: rgba(var(--data-color-second), 1);
+  --color-second-semi: rgba(var(--data-color-second), 0.5);
   --color-third: rgba(var(--data-color-third), 1);
+  --color-third-semi: rgba(var(--data-color-third), 0.5);
   --color-final: rgba(var(--data-color-final), 1);
   --color-final-semi: rgba(var(--data-color-final), 0.5);
 
@@ -71,6 +73,7 @@
   --spacing-fluid-m: clamp(1rem, 6vw, 2rem);
   --spacing-fluid-l: clamp(1.5rem, 8vw, 3rem);
   --spacing-fluid-xl: clamp(2rem, 8vw, 4rem);
+  --spacing-fluid-xxl: clamp(4rem, 12vw, 8rem);
   --spacing-fluid-img: clamp(9.375rem, 50vw, 21.875rem);
 }
 

@@ -1,19 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router";
 import details from "../../Constants/toastDetails";
 import useAuthContext from "../../CustomHooks/useAuthContext/useAuthContext";
 import { IoCloudUpload } from "react-icons/io5";
 import { FiLoader } from "react-icons/fi";
+import { VscEye, VscEyeClosed } from "react-icons/vsc";
 
 const Login = () => {
   const location = useLocation();
-  const { login, isLoading, refetch } = useAuthContext();
+  const { user, login, isLoading, setIsLoading, refetch } = useAuthContext();
   const navigate = useNavigate();
   const [error, setError] = useState(() => {});
+  const [show, setShow] = useState(false);
 
   const handelSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     setError({});
 
     const form = new FormData(e.currentTarget);
@@ -22,6 +25,7 @@ const Login = () => {
 
     if (password.length < 6) {
       setError({ password: "Password must have 6 characters." });
+      setIsLoading(false);
       return;
     }
 
@@ -30,13 +34,19 @@ const Login = () => {
       const res = await login({ email, password });
       if (res) {
         refetch();
-        navigate(location?.state?.path || "/");
+        navigate(location?.state?.path || "/", { replace: true });
       }
     } catch (error) {
       toast(error.message, details("top-center", "❌​​"));
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (user) navigate("/", { replace: true });
+  }, [user]);
 
   return (
     <div>
@@ -73,6 +83,7 @@ const Login = () => {
             </h3>
 
             <div className="space-y-fluid-m">
+              {/* Email */}
               <div>
                 <label className="text-fluid-xs text-prime font-medium mb-fluid-xs block">
                   Email
@@ -90,23 +101,33 @@ const Login = () => {
                   </p>
                 )}
               </div>
+              {/* Password */}
               <div>
                 <label className="text-sm text-prime font-medium mb-fluid-xs block">
                   Password
                 </label>
-                <input
-                  name="password"
-                  type="password"
-                  required
-                  className="bg-final-semi w-full text-sm text-prime px-4 py-3 rounded-md outline-none border focus:border-prime-semi focus:bg-transparent"
-                  placeholder="******"
-                />
+                <div className="relative">
+                  <input
+                    name="password"
+                    type={show ? "text" : "password"}
+                    required
+                    className="bg-final-semi w-full text-sm text-prime pl-4 pr-14 py-3 rounded-md outline-none border focus:border-prime-semi focus:bg-transparent"
+                    placeholder={show ? "expamle pass" : "******"}
+                  />
+                  <div
+                    onClick={() => setShow((prev) => !prev)}
+                    className="absolute top-1/2 right-2 -translate-y-1/2 p-2 cursor-pointer"
+                  >
+                    {show ? <VscEye /> : <VscEyeClosed />}
+                  </div>
+                </div>
                 {error?.password && (
                   <p className="text-fluid-xs text-red-600 font-medium mb-fluid-xs block">
                     {error?.password}
                   </p>
                 )}
               </div>
+              {/* Forget Password */}
               <div className="flex flex-wrap items-center justify-between gap-fluid">
                 <div className="flex items-center">
                   <input
@@ -132,7 +153,7 @@ const Login = () => {
                 </div>
               </div>
             </div>
-
+            {/* Login button */}
             <div className="mt-fluid-l">
               <button
                 type={isLoading ? "button" : "submit"}
@@ -157,7 +178,7 @@ const Login = () => {
               <p className="text-sm text-prime text-center">or</p>
               <hr className="w-full border-final-semi" />
             </div>
-
+            {/* social methods */}
             <div className="space-x-fluid-m flex justify-center">
               <button
                 type="button"

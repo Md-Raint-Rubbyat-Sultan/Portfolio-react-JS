@@ -9,7 +9,7 @@ const authVerifyEmail = async (email) => {
     });
     return data;
   } catch (error) {
-    toast(error.message, details("top-center", "❌​​"));
+    toast(error.response.data.message, details("top-center", "❌​​"));
   }
 };
 

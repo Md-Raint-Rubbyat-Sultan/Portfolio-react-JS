@@ -9,6 +9,8 @@ import Loading from "../components/shared/Loading/Loading";
 import PrivetRoute from "./PrivetRoute";
 import AuthLayout from "../layout/auth/AuthLayout";
 import Login from "../pages/Login/Login";
+import Register from "../pages/Register/Register";
+import VerifyEmail from "../pages/VerifyEmail/verifyEmail";
 
 const RouterDom = () => {
   return (
@@ -45,6 +47,8 @@ const RouterDom = () => {
       {/* auth layout */}
       <Route path="/auth" element={<AuthLayout />}>
         <Route path="/auth/login" element={<Login />} />
+        <Route path="/auth/register" element={<Register />} />
+        <Route path="/auth/verify-email" element={<VerifyEmail />} />
       </Route>
       {/* error page */}
       <Route path="*" element={<ErrorPage />} />
