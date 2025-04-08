@@ -7,7 +7,8 @@ import { IoCloudUpload } from "react-icons/io5";
 import { FiLoader } from "react-icons/fi";
 
 const VerifyEmail = () => {
-  const { user, register, isLoading, setIsLoading, refetch } = useAuthContext();
+  const { user, register, verifyEmail, isLoading, setIsLoading, refetch } =
+    useAuthContext();
   const location = useLocation();
   const navigate = useNavigate();
   const [validationCode, setValidationCode] = useState(null);
@@ -17,7 +18,8 @@ const VerifyEmail = () => {
     setValidationCode(num);
   };
 
-  const handelOnClick = async () => {
+  const handelOnClick = async (e) => {
+    e.preventDefault();
     setIsLoading(true);
 
     if (!location?.state?.email) {
@@ -46,14 +48,27 @@ const VerifyEmail = () => {
     }
   };
 
+  const handleResend = async () => {
+    try {
+      const info = await verifyEmail({ email: location?.state?.email });
+
+      if (info?.accepted[0] === location?.state?.email) {
+        toast(
+          "An verification email has been send",
+          details("top-center", "✅​")
+        );
+      }
+    } catch (error) {
+      return;
+    }
+  };
+
   useEffect(() => {
     if (user) navigate("/", { replace: true });
   }, [user]);
 
-  console.log(location);
-
   return (
-    <div className="px-fluid-xl py-fluid-xxl">
+    <div className="px-fluid py-fluid-m md:px-fluid-xl md:py-fluid-xxl">
       <div className="space-y-fluid-m p-fluid-m bg-prime-semi text-final rounded">
         <h3 className="text-fluid font-medium">
           <Link to={"/auth/register"} className="links text-second">
@@ -66,48 +81,58 @@ const VerifyEmail = () => {
               Verify Email
             </h2>
             <p>
-              <span className="text-third">*</span> An email has been send to{" "}
-              {location?.state?.email}.
+              <span className="text-third">&rarr;</span> An email has been send
+              to {location?.state?.email}.
             </p>
             <p>
-              <span className="text-third">*</span> If you do not found the
+              <span className="text-third">&rarr;</span> If you do not found the
               email to your inbox,
             </p>
             <p>
-              <span className="text-third">*</span> Please also check the spam
-              folder of your email.
+              <span className="text-third">&rarr;</span> Please also check the
+              spam folder of your email.
+            </p>
+            <p>
+              <span className="text-third">&rarr;</span> VErification code will
+              be expired within 5 minutes.
+            </p>
+            <p>
+              To get verification Code again click,{" "}
+              <span onClick={handleResend} className="links cursor-pointer">
+                Resend
+              </span>
             </p>
           </div>
-          <div className="md:w-1/2 mx-auto">
-            <label className="text-fluid-xs font-medium mb-fluid-xs block">
-              Verification Code
-            </label>
-            <input
-              name="code"
-              type="text"
-              required
-              onChange={handelOnChange}
-              className="bg-prime-semi w-full text-sm text-final px-4 py-3 rounded-md outline-none border focus:border-prime-semi"
-              placeholder="1234"
-            />
-          </div>
-          <button
-            onClick={handelOnClick}
-            type="button"
-            className="btn-prime"
-            disabled={isLoading}
+          <form
+            onSubmit={handelOnClick}
+            className="flex flex-col items-center w-full gap-fluid-m"
           >
-            {!isLoading ? (
-              <span className="flex flex-wrap justify-center items-center gap-fluid">
-                <IoCloudUpload />
-                Submit
-              </span>
-            ) : (
-              <span className="flex justify-center items-center text-fluid text-final font-medium">
-                <FiLoader className="animate-spin" />
-              </span>
-            )}
-          </button>
+            <div className="md:w-1/2 mx-auto">
+              <label className="text-fluid-xs font-medium mb-fluid-xs block">
+                Verification Code
+              </label>
+              <input
+                name="code"
+                type="text"
+                required
+                onChange={handelOnChange}
+                className="bg-prime-semi w-full text-sm text-final px-4 py-3 rounded-md outline-none border focus:border-prime-semi"
+                placeholder="1234"
+              />
+            </div>
+            <button type="submit" className="btn-prime" disabled={isLoading}>
+              {!isLoading ? (
+                <span className="flex flex-wrap justify-center items-center gap-fluid">
+                  <IoCloudUpload />
+                  Submit
+                </span>
+              ) : (
+                <span className="flex justify-center items-center text-fluid text-final font-medium">
+                  <FiLoader className="animate-spin" />
+                </span>
+              )}
+            </button>
+          </form>
         </div>
       </div>
     </div>
