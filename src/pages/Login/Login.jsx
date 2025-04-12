@@ -6,14 +6,46 @@ import useAuthContext from "../../CustomHooks/useAuthContext/useAuthContext";
 import { IoCloudUpload } from "react-icons/io5";
 import { FiLoader } from "react-icons/fi";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
+import googleLogin from "../../API/POST/auth.googleLogin";
 
 const Login = () => {
   const location = useLocation();
-  const { user, login, isLoading, setIsLoading, refetch } = useAuthContext();
+  const {
+    user,
+    login,
+    isLoading,
+    setIsLoading,
+    refetch,
+    loginWithGoogle,
+    isGoogleAuthLoading,
+  } = useAuthContext();
   const navigate = useNavigate();
   const [error, setError] = useState(() => {});
   const [show, setShow] = useState(false);
 
+  // Google Auth
+  const handleGoogleLogin = async () => {
+    try {
+      const { user: info } = await loginWithGoogle();
+      if (info?.accessToken) {
+        const data = await googleLogin(
+          info?.displayName,
+          info?.email,
+          info?.photoURL,
+          info?.emailVerified
+        );
+        if (data) {
+          refetch();
+          navigate(location?.state?.path || "/", { replace: true });
+          toast("Login Successfull!", details("top-center", "✅​"));
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // Email Password Auth
   const handelSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -35,6 +67,7 @@ const Login = () => {
       if (res) {
         refetch();
         navigate(location?.state?.path || "/", { replace: true });
+        toast("Login Successfull!", details("top-center", "✅​"));
       }
     } catch (error) {
       toast(error.message, details("top-center", "❌​​"));
@@ -44,6 +77,7 @@ const Login = () => {
     }
   };
 
+  // Check user loged in
   useEffect(() => {
     if (user) navigate("/", { replace: true });
   }, [user]);
@@ -180,9 +214,12 @@ const Login = () => {
             </div>
             {/* social methods */}
             <div className="space-x-fluid-m flex justify-center">
+              {/* google button */}
               <button
+                onClick={handleGoogleLogin}
                 type="button"
                 className="border-none outline-none cursor-pointer"
+                disabled={isGoogleAuthLoading}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -221,6 +258,7 @@ const Login = () => {
                   />
                 </svg>
               </button>
+              {/* facebook button */}
               <button
                 type="button"
                 className="border-none outline-none cursor-pointer"

@@ -42,13 +42,14 @@ const AuthProvider = ({ children }) => {
     mutationFn: () => authLogout(),
   });
 
-  const loginWithGoogle = () => {
-    return signInWithPopup(auth, googleProvider);
-  };
+  const { mutateAsync: loginWithGoogle, isPending: isGoogleAuthLoading } =
+    useMutation({
+      mutationFn: () => signInWithPopup(auth, googleProvider),
+    });
 
-  const loginWithFacebook = () => {
-    return signInWithPopup(auth, facebookProvider);
-  };
+  const { mutateAsync: loginWithFacebook } = useMutation({
+    mutationFn: () => signInWithPopup(auth, facebookProvider),
+  });
 
   const info = {
     user,
@@ -60,6 +61,7 @@ const AuthProvider = ({ children }) => {
     register,
     login,
     loginWithGoogle,
+    isGoogleAuthLoading,
     loginWithFacebook,
     logout,
   };
