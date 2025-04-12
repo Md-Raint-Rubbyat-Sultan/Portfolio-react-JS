@@ -12,6 +12,7 @@ const VerifyEmail = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [validationCode, setValidationCode] = useState(null);
+  const [resendToggle, setResendToggle] = useState(false);
 
   const handelOnChange = (e) => {
     const num = e.target.value;
@@ -49,10 +50,11 @@ const VerifyEmail = () => {
   };
 
   const handleResend = async () => {
+    setResendToggle(true);
     try {
       const info = await verifyEmail({ email: location?.state?.email });
 
-      if (info?.accepted[0] === location?.state?.email) {
+      if (info?.accepted[0] === location?.state?.email && info !== undefined) {
         toast(
           "An verification email has been send",
           details("top-center", "✅​")
@@ -60,6 +62,8 @@ const VerifyEmail = () => {
       }
     } catch (error) {
       return;
+    } finally {
+      setResendToggle(false);
     }
   };
 
@@ -98,9 +102,16 @@ const VerifyEmail = () => {
             </p>
             <p>
               To get verification Code again click,{" "}
-              <span onClick={handleResend} className="links cursor-pointer">
-                Resend
-              </span>
+              {!resendToggle ? (
+                <span onClick={handleResend} className="links cursor-pointer">
+                  Resend.
+                </span>
+              ) : (
+                <span className="inline links">
+                  <span>Resend.</span>
+                  <FiLoader className="inline animate-spin" />
+                </span>
+              )}
             </p>
           </div>
           <form
@@ -127,7 +138,7 @@ const VerifyEmail = () => {
                   Submit
                 </span>
               ) : (
-                <span className="flex justify-center items-center text-fluid text-final font-medium">
+                <span className="text-fluid text-final font-medium">
                   <FiLoader className="animate-spin" />
                 </span>
               )}
