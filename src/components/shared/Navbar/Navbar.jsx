@@ -8,6 +8,7 @@ import { IoMdColorPalette, IoMdCreate } from "react-icons/io";
 import { FiLogIn } from "react-icons/fi";
 import { MdLogout } from "react-icons/md";
 import { useQueryClient } from "@tanstack/react-query";
+import Tooltip from "../Tooltip/Tooltip";
 
 const Navbar = () => {
   const { user, refetch, logout } = useAuthContext();
@@ -55,69 +56,84 @@ const Navbar = () => {
   // check if the link is active or not
   const activeLinks = ({ isActive }) =>
     isActive ? "text-second underline" : "text-third";
+  const activeProfileLinks = ({ isActive }) =>
+    isActive
+      ? "border-2 border-second-semi rounded-full"
+      : "border-2 border-third-semi rounded-full";
 
   return (
     <header className="relative">
       {/* Main Navbar (not fixed) */}
       <nav
         ref={navRef}
-        className="flex flex-wrap justify-center items-center gap-fluid-l py-fluid-xs text-fluid-xs font-semibold"
+        className="flex flex-wrap justify-center items-center gap-fluid-l py-fluid-xs"
       >
         {/* home */}
         <NavLink to="/" className={activeLinks}>
-          <div className="flex items-center gap-fluid-xs">
-            <FaHome />
-            <span>Home</span>
-          </div>
+          <Tooltip tip={"Home"}>
+            <FaHome className="text-fluid font-semibold" />
+          </Tooltip>
         </NavLink>
         {/* about */}
         <NavLink to="/about" className={activeLinks}>
-          <div className="flex items-center gap-fluid-xs">
-            <FaTasks />
-            <span>About</span>
-          </div>
+          <Tooltip tip={"About"}>
+            <FaTasks className="text-fluid font-semibold" />
+          </Tooltip>
         </NavLink>
         {/* theme */}
         <div>
-          <button
-            onClick={handelThemeToggle}
-            className={`${
-              toggle ? "text-second" : "text-third "
-            } flex items-center gap-fluid-xs cursor-pointer`}
-          >
-            <IoMdColorPalette />
-            <span className={`${toggle && "underline"}`}>Themes</span>
-          </button>
+          <Tooltip tip={"Themes"}>
+            <button
+              onClick={handelThemeToggle}
+              className={`${
+                toggle ? "text-second" : "text-third "
+              } flex items-center gap-fluid-xs cursor-pointer`}
+            >
+              <IoMdColorPalette className="text-fluid font-semibold" />
+              {/* <span className={`${toggle && "underline"}`}>Themes</span> */}
+            </button>
+          </Tooltip>
         </div>
         <NavThemeButton toggle={toggle} setToggle={setToggle} />
         {user ? (
-          // logout
-          <div>
-            <button
-              onClick={() => handleLogout()}
-              className={
-                "flex items-center gap-fluid-xs text-third focus:text-second focus:underline cursor-pointer"
-              }
-            >
-              <MdLogout />
-              <span>Logout</span>
-            </button>
-          </div>
+          <>
+            {/* logout */}
+            <div>
+              <Tooltip tip={"Logout"}>
+                <button
+                  onClick={() => handleLogout()}
+                  className={
+                    "text-third focus:text-second focus:underline cursor-pointer"
+                  }
+                >
+                  <MdLogout className="text-fluid font-semibold" />
+                </button>
+              </Tooltip>
+            </div>
+            {/* profile */}
+            <NavLink to="/profile" className={activeProfileLinks}>
+              <Tooltip tip={"Profile"}>
+                <img
+                  src={user?.profilePic?.url}
+                  alt="profile"
+                  className="w-fluid-m h-fluid-m rounded-full"
+                />
+              </Tooltip>
+            </NavLink>
+          </>
         ) : (
           <>
             {/* Login */}
             <NavLink to="/auth/login" className={activeLinks}>
-              <div className="flex items-center gap-fluid-xs">
-                <FiLogIn />
-                <span>Login</span>
-              </div>
+              <Tooltip tip={"Login"}>
+                <FiLogIn className="text-fluid font-semibold" />
+              </Tooltip>
             </NavLink>
             {/* Register */}
             <NavLink to="/auth/register" className={activeLinks}>
-              <div className="flex items-center gap-fluid-xs">
-                <IoMdCreate />
-                <span>Sign Up</span>
-              </div>
+              <Tooltip tip={"Register"}>
+                <IoMdCreate className="text-fluid font-semibold" />
+              </Tooltip>
             </NavLink>
           </>
         )}

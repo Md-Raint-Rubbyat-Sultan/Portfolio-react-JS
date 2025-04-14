@@ -103,6 +103,10 @@
   .links {
     @apply text-third hover:underline hover:text-second;
   }
+
+  .tooltip {
+    @apply hidden absolute top-[110%] left-[25%] max-w-fluid-xxl text-wrap bg-prime-semi text-final text-xs px-fluid py-fluid-xs rounded group-hover:inline-block z-50 overflow-hidden;
+  }
 }
 
 @layer utilities {

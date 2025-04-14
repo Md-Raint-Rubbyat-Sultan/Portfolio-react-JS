@@ -11,6 +11,7 @@ import AuthLayout from "../layout/auth/AuthLayout";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import VerifyEmail from "../pages/VerifyEmail/verifyEmail";
+import Profile from "../pages/Profile/Profile";
 
 const RouterDom = () => {
   return (
@@ -39,6 +40,16 @@ const RouterDom = () => {
             <Suspense fallback={<Loading />}>
               <PrivetRoute>
                 <ProjectDetails />
+              </PrivetRoute>
+            </Suspense>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <Suspense fallback={<Loading />}>
+              <PrivetRoute>
+                <Profile />
               </PrivetRoute>
             </Suspense>
           }

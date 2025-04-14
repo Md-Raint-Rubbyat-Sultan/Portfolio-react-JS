@@ -77,8 +77,8 @@ const Register = () => {
     setError({});
 
     const form = new FormData(e.currentTarget);
-    const email = form.get("email");
-    const name = form.get("user_name");
+    const email = form.get("email").trim();
+    const name = form.get("user_name").trim();
     const password = form.get("password");
     const confirmPassword = form.get("confirm_password");
 

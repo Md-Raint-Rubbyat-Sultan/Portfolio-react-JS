@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import checkAuth from "../../API/POST/auth.checkAuth";
+import checkAuth from "../../API/GET/auth.checkAuth";
 import authLogout from "../../API/POST/auth.logout";
 import authLogin from "../../API/POST/auth.login";
 import authRegister from "../../API/POST/auth.register";
