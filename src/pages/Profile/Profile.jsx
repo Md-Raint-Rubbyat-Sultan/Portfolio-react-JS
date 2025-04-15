@@ -12,7 +12,7 @@ const Profile = () => {
   const { fullName, email, profilePic, role, createdAt } = user;
 
   return (
-    <section className="flex flex-col justify-center items-center gap-fluid-m mb-fluid-m">
+    <section className="flex flex-col justify-start items-center gap-fluid-m mb-fluid-m min-h-screen">
       <div className="w-fit rounded-full overflow-hidden">
         <img
           src={profilePic?.url}
