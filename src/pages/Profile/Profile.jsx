@@ -2,7 +2,7 @@ import React from "react";
 import useAuthContext from "../../CustomHooks/useAuthContext/useAuthContext";
 import Loading from "../../components/shared/Loading/Loading";
 import formatDate from "../../Constants/formatDate";
-import { IoMdColorPalette, IoMdCreate } from "react-icons/io";
+import { IoMdCreate } from "react-icons/io";
 
 const Profile = () => {
   const { user, isUserLoading } = useAuthContext();
