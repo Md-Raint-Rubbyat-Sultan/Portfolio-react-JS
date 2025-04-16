@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Tooltip = ({ children, tip }) => {
   return (
-    <div className="relative group">
+    <div className="relative w-fit group">
       {children}
       <span className="tooltip">{tip}</span>
     </div>

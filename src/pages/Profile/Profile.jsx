@@ -3,6 +3,7 @@ import useAuthContext from "../../CustomHooks/useAuthContext/useAuthContext";
 import Loading from "../../components/shared/Loading/Loading";
 import formatDate from "../../Constants/formatDate";
 import { IoMdCreate } from "react-icons/io";
+import { MdDelete } from "react-icons/md";
 
 const Profile = () => {
   const { user, isUserLoading } = useAuthContext();
@@ -26,13 +27,25 @@ const Profile = () => {
         <p>{email}</p>
         <p>Role: {role}</p>
       </div>
-      <button
-        type="button"
-        className="flex items-center gap-fluid-xs btn-prime"
-      >
-        Edit
-        <IoMdCreate />
-      </button>
+      {/* Buttons */}
+      <div className="flex flex-col md:flex-row justify-between items-center gap-fluid-m">
+        {/* Edit button */}
+        <button
+          type="button"
+          className="flex items-center gap-fluid-xs btn-prime"
+        >
+          Edit
+          <IoMdCreate />
+        </button>
+        {/* Delete button */}
+        <button
+          type="button"
+          className="flex items-center gap-fluid-xs btn-prime"
+        >
+          Delete
+          <MdDelete />
+        </button>
+      </div>
     </section>
   );
 };

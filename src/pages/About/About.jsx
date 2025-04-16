@@ -13,6 +13,7 @@ import handleDownloadPDF from "../../Constants/handelDownloadPDF";
 import getAdminData from "../../API/GET/getAdminData";
 import getAllProjects from "../../API/GET/getAllProjects";
 import Loading from "../../components/shared/Loading/Loading";
+import Tooltip from "../../components/shared/Tooltip/Tooltip";
 
 const About = () => {
   const [adminData, isLoading] = getAdminData();
@@ -22,13 +23,15 @@ const About = () => {
 
   return (
     <section className="my-fluid-m space-y-fluid relative">
-      <div className="text-right">
-        <button
-          onClick={() => handleDownloadPDF(adminData, allProject?.data)}
-          className="btn-prime"
-        >
-          Download My Resume
-        </button>
+      <div className="flex justify-end items-center">
+        <Tooltip tip={"Download my CV"}>
+          <button
+            onClick={() => handleDownloadPDF(adminData, allProject?.data)}
+            className="btn-prime"
+          >
+            Download CV
+          </button>
+        </Tooltip>
       </div>
       {/* mian resume */}
       <div className="space-y-fluid-m bg-final text-prime">
